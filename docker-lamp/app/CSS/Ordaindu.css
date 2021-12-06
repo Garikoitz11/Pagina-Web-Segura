@@ -1,0 +1,29 @@
+#forma{
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+footer{
+    background-color: #CFBFBC;
+}
+footer div{
+    margin-left: 30px;
+}
+#twitter{
+    margin-top: 10px;
+}
+#erosketabaldintzak{
+    margin-top: 15px;
+}
+#bilatu{
+    float: right;
+    margin-right: 20px;
+}
+#bidali{
+    margin-left: 450px;
+    padding: 12px;
+    margin-top: 12px;
+    font-family: Arial;
+    font-size: 15px;
+}

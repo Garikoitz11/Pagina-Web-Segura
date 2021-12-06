@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.header {
+    background: #202020;
+    display: block;
+    margin: 0;
+}
+    .logo {
+        letter-spacing: 5px;
+        font-size: 1.3em;
+    }
+    .logo-principal {
+        width: 200px;
+        display: block;
+        margin: auto;
+    }
+
+.titulillos{
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.texto{
+    margin-top: 10px;
+    margin-left: 100px;
+    color: dimgrey;
+}
+
+/*FOOTER*/
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.copyright {
+    width: 100%;
+    background: #202020;
+    display: flex;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+    .copyright a {
+        text-align: center;
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: all 0.4s linear;
+        border-radius: 7px;
+        font-weight: bold; 
+    }
+        .copyright a:hover {
+            background: #ce0000;
+        }

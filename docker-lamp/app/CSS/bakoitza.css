@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 85%;
+    max-width: 1000px;
+    margin-top: 50px;
+    margin: 0 auto;
+}
+
+.header {
+    background: #202020;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+    .header a {
+        color: white;
+        text-decoration: none;
+        margin-top: 6px;
+        margin-bottom: 3px;
+    }
+
+.logo-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    
+}
+
+.logo {
+    letter-spacing: 5px;
+    font-size: 1.3em;
+    text-align: left;
+}
+
+.logo-principal {
+    width: 200px;
+    text-align: left;
+}
+
+.navigation  {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+    .navigation  li {
+        display: inline-block;
+        text-align: right;
+    }
+        .navigation  li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+            .navigation li a:hover {
+                background: #ce0000;
+            }
+
+/* CUERPO */
+
+nav{
+    column-count: 2;
+}
+.foto{
+    text-align: right;
+    margin-right: 30px;   
+    
+}
+
+.cuerpo1{
+    padding-top: 50px;
+}
+
+.cuerpo{
+    margin-top: 10px;
+}
+
+.titulo{
+    margin-top: 150px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: dimgrey;
+}
+
+.erosi{
+    background-color: darkred;
+    color: white;
+    font-size: 20px;
+}
+
+/*FOOTER*/
+.footer-container {
+    width: 100%;
+    display: inline-block;
+    flex-wrap: wrap;
+    background: #202020;
+    padding: 1rem 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+    .ultimos-botones {
+        float: center;
+        padding: 0;
+        margin-top: 15px;
+        background: #202020;
+    }
+        .ultimos-botones ul {
+            list-style-type: none;
+        }
+        .ultimos-botones li {
+            margin-left: 43,5%;
+            padding: 4px;
+        }
+            .ultimos-botones li a{
+                background: white;
+                color: black;
+                font-size: 14px;
+                font-weight: bold;
+                margin-left: 43.9%;
+                max-width: 15px;
+                min-width: 12%;
+                width: 50%;
+                display: block;
+                padding: 0.5rem 1rem;
+                text-decoration: none;
+                border-radius: 400px;
+                padding: 4px;
+            }
+                .ultimos-botones li a:hover {
+                    background: #ce0000;
+                }
+    .img {
+        width: 70%;
+        display: block;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .copyright {
+        width: 100%;
+        background: black;
+        display: flex;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+    }
+        .copyright a {
+            text-align: center;
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 7px;
+            font-weight: bold; 
+        }
+            .copyright a:hover {
+                background: #ce0000;
+            }
