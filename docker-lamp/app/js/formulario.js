@@ -91,7 +91,7 @@ function validarMugikorra(parametro){
 
 //Funcion para pasahitza
 function validarPasahitza(parametro){
-    var patron= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
+    var patron= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&.-~<>;:#¿¡_])[A-Za-z\d$@$!%*?&.-~<>;:#¿¡_]{8,15}/;
     if(parametro.search(patron)){
         return false;
     }else{
