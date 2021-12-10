@@ -27,14 +27,14 @@
         <div class="formulario__grupo" id="grupo__usuario">
             <label for="usuario" class="formulario__label1">Erabiltzaile-izena</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="erabiltzaile" id="usuario" placeholder="markel45">
+                <input type="text" class="formulario__input" name="erabiltzaile" id="usuario" required pattern="[A-Za-z0-9_-]{1,15}" placeholder="markel45">
             </div>
         </div>
         <br>
         <div class="formulario__grupo" id="grupo__password">
             <label for="password" class="formulario__label2">Pasahitza</label>
             <div class="formulario__grupo-input">
-                <input type="password" class="formulario__input" name="pasahitza" id="password" value="">
+                <input type="password" class="formulario__input" name="pasahitza" id="password" value="" required>
                 <span id = "message1" style="color:red"> </span>
             </div>
         </div>
