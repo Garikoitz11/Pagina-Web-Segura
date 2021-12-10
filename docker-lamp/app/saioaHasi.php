@@ -3,7 +3,7 @@
     $username = "admin";
     $password = "test";
     $db = "database";
-
+    
     $Erabiltzaile = $_POST['erabiltzaile'];
     $Pasahitza = $_POST['pasahitza'];
 
