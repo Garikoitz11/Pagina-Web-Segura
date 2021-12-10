@@ -89,6 +89,16 @@ function validarMugikorra(parametro){
     }
 }
 
+//Funcion para pasahitza
+function validarPasahitza(parametro){
+    var patron= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
+    if(parametro.search(patron)){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 function validarFormulario(){
    
    var formulario = document.addForm; 
@@ -181,7 +191,16 @@ function validarFormulario(){
         document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, pasahitza sartu.</div>';
         formulario.password.focus();
         return false;
+    }else if(validarPasahitza(formulario.password.value)== false){
+        document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, sartu pasahitz bat 8 digiturekin edo gehiago eta maiuskula, minuskula, zenbaki eta karakter arraro batekin.</div>';
+        formulario.password.value = "";
+        formulario.password.focus();
+        return false;
     }
+    else{
+    document.getElementById("alerta").innerHTML = "";
+    }
+    
     if(formulario.password.value != formulario.password2.value){
         document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Pasahitzak desberdinak dira</div>';
         formulario.password.focus();
@@ -191,7 +210,6 @@ function validarFormulario(){
     } else {
         document.getElementById("alerta").innerHTML = "";
     }
-
     if(formulario.correo.value == ""){
         document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, posta-elektronikoa sartu.</div>';
         formulario.correo.focus();
