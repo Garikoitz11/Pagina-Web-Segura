@@ -1,9 +1,7 @@
 <?php
-    $conexion = mysqli_connect("db", "admin", "test", "database");
-    mysqli_set_charset($conexion, "utf8");
-    $erabiltzaile = "SELECT Kodea, Izena, Prezioa FROM Produktuak"; 
-
-    //session_start();
+    $conn = new mysqli("db", "admin", "test", "database");
+    $conn->set_charset('utf8');
+    $kontsulta = "SELECT Kodea, Izena, Prezioa FROM Produktuak"; 
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +27,12 @@
             <div class="table__header">Izena</div>
             <div class="table__header">Prezioa</div>
             <div class="table__header"></div>
-            <?php $emaitza = mysqli_query($conexion, $erabiltzaile);
-            while($row=mysqli_fetch_assoc($emaitza)){?>
-            <div class="table__item"><?php echo $row["Izena"];?></div>
-            <div class="table__item"><?php echo $row["Prezioa"];?></div>
-            <div class="table__item"><a href='produktuOsoa.php?kodea=<?php echo $row["Kodea"];?>'>Informazio gehiago</a></div>
-            <?php } mysqli_free_result($emaitza);?>
+            <?php $kontsultaBerria = $conn->query($kontsulta);
+            while($row = $kontsultaBerria->fetch_row()){?>
+            <div class="table__item"><?php echo $row[1];?></div>
+            <div class="table__item"><?php echo $row[2];?></div>
+            <div class="table__item"><a href='produktuOsoa.php?kodea=<?php echo $row[0];?>'>Informazio gehiago</a></div>
+            <?php } $kontsultaBerria->close();?>
         </div>
 
         <footer>
