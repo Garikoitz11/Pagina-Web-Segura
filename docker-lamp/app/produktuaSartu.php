@@ -13,10 +13,10 @@
 
         $kontsultaBerria->bind_param('sssd', $Izena, $Mota, $Deskribapena, $Prezioa);
         $kontsultaBerria->execute();
-        #$emaitza = $kontsultaBerria->get_result();
        
         if($kontsultaBerria){
-            echo "<script>alert('Produktua igo da')";
+            echo "<script>alert('Produktua igo da');
+            window.location.href='index.html'</script>";
         }
         else{
             echo "<script>alert('Ezin izan da produktua igo');
