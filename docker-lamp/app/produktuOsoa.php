@@ -7,7 +7,7 @@
 
     session_start();
 
-    $conn = mysqli_connect($hostname,$username,$password,$db);
+    $conn = new mysqli($hostname,$username,$password,$db);
 
     $conn->set_charset('utf8');
 
@@ -56,7 +56,7 @@
             <div class="table__item"><?php echo $row[3];?></div>
             <div class="table__item"><?php echo $row[4];?></div>
             <div class="table__item"><a href='produktuaAldatu.php'>Editatu</a></div>
-            <div class="table__item"><a href='#' onclick="galdetu(<?php echo['kodea']?>)">Ezabatu</a></div>
+            <div class="table__item"><a href='#' onclick="galdetu(<?php echo[0]?>)">Ezabatu</a></div>
             <?php } $kontsultaBerria->close();?>
         </div>
                 <script type="text/javascript">

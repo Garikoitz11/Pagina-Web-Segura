@@ -6,28 +6,29 @@
     $password = "test";
     $db = "database";
     
-    $Kodea=$_SESSION['kode'];
-    $Izena=$_POST['izena'];
-    $Mota=$_POST['mota'];
-    $Deskribapena=$_POST['deskribapena'];
-    $Prezioa=$_POST['prezio'];
+    $conn = new mysqli($hostname,$username,$password,$db);
+
+    $conn->set_charset('utf8');
+
+    $Kodea=$conn->real_escape_string($_SESSION['kode']);
+    $Izena=$conn->real_escape_string($_POST['izena']);
+    $Mota=$conn->real_escape_string($_POST['mota']);
+    $Deskribapena=$conn->real_escape_string($_POST['deskribapena']);
+    $Prezioa=$conn->real_escape_string($_POST['prezio']);
     
-    $conn = mysqli_connect($hostname,$username,$password,$db);
-    
-    if ($conn->connect_error) {
+    /*if ($conn->connect_error) {
       die("Database connection failed: " . $conn->connect_error);
-    }
-  
-    $sartu = "UPDATE Produktuak SET Izena = '$Izena', Mota = '$Mota', Deskribapena = '$Deskribapena', Prezioa = '$Prezioa' WHERE Kodea = '$Kodea'";
-   
+    }*/
+    if($kontsultaBerria = $conn->prepare("UPDATE Produktuak SET Izena = ?, Mota = ?, Deskribapena = ?, Prezioa = ? WHERE Kodea = ?")){
+      $kontsultaBerria->bind_param('sssdi', $Izena, $Mota, $Deskribapena, $Prezioa, $Kodea);
+      $kontsultaBerria->execute();
 
-    $query = mysqli_query($conn, $sartu);
-
-    if($query){
-      echo "<script>alert('Produktua eguneratu da');
-      window.location.href='produktuakKontsultatu.php'</script>";
-    }
-    else{
-      echo "<script>alert('Ezin izan da produktua eguneratu'); window.history.go(-1);</script>";
+      if($kontsultaBerria){
+        echo "<script>alert('Produktua eguneratu da');
+        window.location.href='produktuakKontsultatu.php'</script>";
+      }
+      else{
+        echo "<script>alert('Ezin izan da produktua eguneratu'); window.history.go(-1);</script>";
+      }
     }
 ?>
