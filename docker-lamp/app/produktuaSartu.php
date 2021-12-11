@@ -1,30 +1,33 @@
-<?php 
-    $hostname = "db";
-	$username = "admin";
-	$password = "test";
-	$db = "database";
+<?php
 
-	$Izena = $_POST['izena'];
-	$Mota = $_POST['mota'];
-	$Deskribapena = $_POST['deskribapena'];
-	$Prezioa = $_POST['prezio'];
-	
-	$conn = mysqli_connect($hostname,$username,$password,$db);
-	
-	if ($conn->connect_error) {
-      		die("Database connection failed: " . $conn->connect_error);
+    $hostname = "db";
+    $username = "admin";
+    $password = "test";
+    $db = "database";
+
+    $conn = mysqli_connect($hostname,$username,$password,$db);
+
+    $conn->set_charset('utf8');
+
+    $Izena = $conn->real_escape_string($_POST['izena']);
+    $Mota = $conn->real_escape_string($_POST['mota']);
+    $Deskribapena = real_escape_string($_POST['deskribapena']);
+	$Prezioa = real_escape_string($_POST['prezio']);
+
+    if($kontsultaBerria = $conn->prepare("INSERT INTO Produktuak (Izena, Mota, Deskribapena, Prezioa) VALUES (?, ?, ?, ?)")){
+
+        $kontsultaBerria->bind_param('ssss', $Izena, $Mota, $Deskribapena, $Prezioa);
+        $kontsultaBerria->execute();
+        $emaitza = $kontsultaBerria->get_result();
+
+        if($emaitza->error){
+            echo "<script>alert('Ezin izan da produktua igo');
+            window.history.go(-1);</script>";
+        }
+        else{
+            echo "<script>alert('Produktua igo da')";
+        }
+        $kontsultaBerria->close();
     }
-    	
-    $sartu = "INSERT INTO Produktuak (Izena, Mota, Deskribapena, Prezioa) VALUES ('$Izena', '$Mota', '$Deskribapena', '$Prezioa')";
-    
-    $query = mysqli_query($conn, $sartu);
-    
-    if($query){
-        echo "<script>alert('Produktua igo da');
-        window.location.href='index.html'</script>";
-    }
-    else{
-        echo "<script>alert('Ezin izan da produktua igo');
-        window.history.go(-1);</script>";
-    }
+
 ?>
