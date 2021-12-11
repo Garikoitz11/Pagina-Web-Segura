@@ -2,8 +2,8 @@
     session_start();
     $GureKodea = $_SESSION['kode'];
 
-    $conexion = mysqli_connect("db", "admin", "test", "database");
-    $erabiltzaile = "SELECT * FROM Produktuak WHERE Kodea = '$GureKodea'"; 
+    $conexion = new mysqli("db", "admin", "test", "database");
+    $kontsulta = "SELECT * FROM Produktuak WHERE Kodea = '$GureKodea'"; 
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +24,8 @@
             </div>
         </header>
 		<main>
-        <?php $emaitza = mysqli_query($conexion, $erabiltzaile);
-                while($row=mysqli_fetch_assoc($emaitza)){?>
+        <?php $emaitza = $conexion->query($kontsulta);
+                while($row = $emaitza->fetch_row()){?>
 
         <div class="alerta" id="alerta"></div>
         <br>
@@ -36,7 +36,7 @@
 			<div class="formulario__grupo" id="grupo__nombre">
 				<label for="nombre" class="formulario__label">Kodea</label>
 				<div class="formulario__grupo-input">
-					<div class="formulario__input" value="id" id="id" name="id"><?php echo $row["Kodea"];?></div>
+					<div class="formulario__input" value="id" id="id" name="id"><?php echo $row[0];?></div>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 			<div class="formulario__grupo" id="grupo__nombre">
 				<label for="nombre" class="formulario__label">Izena</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="izena" id="nombre" value="<?php echo $row["Izena"];?>">
+					<input type="text" class="formulario__input" name="izena" id="nombre" value="<?php echo $row[1];?>">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 			<div class="formulario__grupo" id="grupo__mota">
 				<label for="mota" class="formulario__label">Mota</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="mota" id="mota" value="<?php echo $row["Mota"];?>">
+					<input type="text" class="formulario__input" name="mota" id="mota" value="<?php echo $row[2];?>">
 				</div>
 			</div>
 
@@ -62,7 +62,7 @@
 			<div class="formulario__grupo" id="grupo__deskribapena">
 				<label for="deskribapena" class="formulario__label">Deskribapena</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="deskribapena" id="deskribapena" value="<?php echo $row["Deskribapena"];?>">
+					<input type="text" class="formulario__input" name="deskribapena" id="deskribapena" value="<?php echo $row[3];?>">
 				</div>
 			</div>
 
@@ -70,7 +70,7 @@
 			<div class="formulario__grupo" id="grupo__prezio">
 				<label for="prezio" class="formulario__label">Prezio</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="prezio" id="prezio" value="<?php echo $row["Prezioa"];?>">
+					<input type="text" class="formulario__input" name="prezio" id="prezio" value="<?php echo $row[4];?>">
 				</div>
 			</div>
 				
