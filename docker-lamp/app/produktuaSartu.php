@@ -11,12 +11,12 @@
 
     $Izena = $conn->real_escape_string($_POST['izena']);
     $Mota = $conn->real_escape_string($_POST['mota']);
-    $Deskribapena = real_escape_string($_POST['deskribapena']);
-	$Prezioa = real_escape_string($_POST['prezio']);
+    $Deskribapena = $conn->real_escape_string($_POST['deskribapena']);
+	$Prezioa = $conn->real_escape_string($_POST['prezio']);
 
     if($kontsultaBerria = $conn->prepare("INSERT INTO Produktuak (Izena, Mota, Deskribapena, Prezioa) VALUES (?, ?, ?, ?)")){
 
-        $kontsultaBerria->bind_param('ssss', $Izena, $Mota, $Deskribapena, $Prezioa);
+        $kontsultaBerria->bind_param('sssd', $Izena, $Mota, $Deskribapena, $Prezioa);
         $kontsultaBerria->execute();
         $emaitza = $kontsultaBerria->get_result();
 
