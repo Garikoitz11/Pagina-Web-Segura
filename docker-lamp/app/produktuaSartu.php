@@ -20,12 +20,12 @@
         $kontsultaBerria->execute();
         $emaitza = $kontsultaBerria->get_result();
 
-        if($emaitza->error){
-            echo "<script>alert('Ezin izan da produktua igo');
-            window.history.go(-1);</script>";
+        if($emaitza){
+            echo "<script>alert('Produktua igo da')";
         }
         else{
-            echo "<script>alert('Produktua igo da')";
+            echo "<script>alert('Ezin izan da produktua igo');
+            window.history.go(-1);</script>";
         }
         $kontsultaBerria->close();
     }
