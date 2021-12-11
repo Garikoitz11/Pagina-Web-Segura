@@ -1,11 +1,6 @@
 <?php
 
-    $hostname = "db";
-    $username = "admin";
-    $password = "test";
-    $db = "database";
-
-    $conn = mysqli_connect($hostname,$username,$password,$db);
+    $conn = new mysqli('db','admin','test','database');
 
     $conn->set_charset('utf8');
 
@@ -18,9 +13,9 @@
 
         $kontsultaBerria->bind_param('sssd', $Izena, $Mota, $Deskribapena, $Prezioa);
         $kontsultaBerria->execute();
-        $emaitza = $kontsultaBerria->get_result();
-
-        if($emaitza){
+        #$emaitza = $kontsultaBerria->get_result();
+       
+        if($kontsultaBerria){
             echo "<script>alert('Produktua igo da')";
         }
         else{
