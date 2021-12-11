@@ -1,11 +1,21 @@
 <?php
+
+    $hostname = "db";
+    $username = "admin";
+    $password = "test";
+    $db = "database";
+
     session_start();
-    $ProduktuKode = $_GET["kodea"];
+
+    $conn = mysqli_connect($hostname,$username,$password,$db);
+
+    $conn->set_charset('utf8');
+
+    $ProduktuKode = $conn->real_escape_string($_GET["kodea"]);
     $_SESSION["kode"] = $ProduktuKode;
     $Kode = $_SESSION["kode"];
+    $kontsulta = "SELECT * FROM Produktuak WHERE Kodea = ?"; 
 
-    $conexion = mysqli_connect("db", "admin", "test", "database");
-    $erabiltzaile = "SELECT * FROM Produktuak WHERE Kodea = '$Kode'"; 
 ?>
 
 <!DOCTYPE html>
@@ -35,16 +45,19 @@
             <div class="table__header">Prezioa</div>
             <div class="table__header"></div>
             <div class="table__header"></div>
-            <?php $emaitza = mysqli_query($conexion, $erabiltzaile);
-            while($row=mysqli_fetch_assoc($emaitza)){?>
-            <div class="table__item"><?php echo $row["Kodea"];?></div>
-            <div class="table__item"><?php echo $row["Izena"];?></div>
-            <div class="table__item"><?php echo $row["Mota"];?></div>
-            <div class="table__item"><?php echo $row["Deskribapena"];?></div>
-            <div class="table__item"><?php echo $row["Prezioa"];?></div>
+            <?php $kontsultaBerria = $conn->prepare($kontsulta);
+            $kontsultaBerria->bind_param('s', $Kode);
+            $kontsultaBerria->execute();
+            $emaitza = $kontsultaBerria->get_result();
+            while($row = $emaitza->fetch_row()){?>
+            <div class="table__item"><?php echo $row[0];?></div>
+            <div class="table__item"><?php echo $row[1];?></div>
+            <div class="table__item"><?php echo $row[2];?></div>
+            <div class="table__item"><?php echo $row[3];?></div>
+            <div class="table__item"><?php echo $row[4];?></div>
             <div class="table__item"><a href='produktuaAldatu.php'>Editatu</a></div>
             <div class="table__item"><a href='#' onclick="galdetu(<?php echo['kodea']?>)">Ezabatu</a></div>
-            <?php } mysqli_free_result($emaitza);?>
+            <?php } $kontsultaBerria->close();?>
         </div>
                 <script type="text/javascript">
                     function galdetu(id)
