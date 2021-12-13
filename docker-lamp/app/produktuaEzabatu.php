@@ -21,4 +21,5 @@
     else{
       echo "<script>alert('Ezin izan da produktua ezabatu'); window.history.go(-1);</script>";
     }
+    $kontsultaBerria->close();
 ?>
