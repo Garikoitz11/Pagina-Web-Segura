@@ -23,17 +23,17 @@
     $PostaElektronikoa=$conn->real_escape_string($_POST['postaElektronikoa']);
     $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
     
-    if($kontsultaBerria = $conn->prepare("UPDATE Erregistroa SET Izena = ?, Abizenak = ?, PostaKodea = ?, NAN = ?, JaiotzaData = ?, Pasahitza = ?, PostaElektronikoa = ?, Mugikorra = ? WHERE Erabiltzailea = ?")){
+    $kontsultaBerria = $conn->prepare("UPDATE Erregistroa SET Izena = ?, Abizenak = ?, PostaKodea = ?, NAN = ?, JaiotzaData = ?, Pasahitza = ?, PostaElektronikoa = ?, Mugikorra = ? WHERE Erabiltzailea = ?");
 
-      $kontsultaBerria->bind_param('ssissssis', $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra, $Erabiltzailea);
-      $kontsultaBerria->execute();
+    $kontsultaBerria->bind_param('ssissssis', $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra, $Erabiltzailea);
+    $kontsultaBerria->execute();
 
-      if($kontsultaBerria){
-        echo "<script>alert('Erabiltzailea eguneratu da');
-        window.location.href='index.html'</script>";
-      }
-      else{
-        echo "<script>alert('Ezin izan da erabiltzailea eguneratu'); window.history.go(-1);</script>";
-      }
+    if($kontsultaBerria){
+      echo "<script>alert('Erabiltzailea eguneratu da');
+      window.location.href='index.html'</script>";
     }
+    else{
+      echo "<script>alert('Ezin izan da erabiltzailea eguneratu'); window.history.go(-1);</script>";
+    }
+    
 ?>

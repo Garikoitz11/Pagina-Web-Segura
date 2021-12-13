@@ -1,10 +1,6 @@
 <?php
 
   $conn = new mysqli('db','admin','test','database');
-  
-  /*if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-  }*/
 
   $conn->set_charset('utf8');
 
@@ -18,19 +14,15 @@
   $PostaElektronikoa=$conn->real_escape_string($_POST['postaElektronikoa']);
   $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
 
-  if($kontsultaBerria = $conn->prepare("INSERT INTO Erregistroa (Erabiltzailea, Izena, Abizenak, PostaKodea, NAN, JaiotzaData, Pasahitza, PostaElektronikoa, Mugikorra) VALUES (?,?,?,?,?,?,?,?,?)")){
+  $kontsultaBerria = $conn->query("INSERT INTO Erregistroa VALUES ('$Erabiltzailea', '$Izena', '$Abizena', '$PostaKodea', '$NAN', '$JaiotzaData', '$Pasahitza', '$PostaElektronikoa', '$Mugikorra')");
 
-    $kontsultaBerria->bind_param('sssisissi', $Erabiltzailea, $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra);
-    $kontsultaBerria->execute();
-
-    if($kontsultaBerria){
-      echo "<script>alert('Erabiltzailea erregistratu da');
-      window.location.href='index.html'</script>";
-    }
-    else{
-      echo "<script>alert('Beste erabiltzaile izen bat aukeratu'); 
-      window.history.go(-1);</script>";
-    }
-    $kontsultaBerria->close();
+  if($kontsultaBerria){
+    echo "<script>alert('Erabiltzailea erregistratu da');
+    window.location.href='index.html'</script>";
+  }
+  else{
+    echo hola;
+    echo "<script>alert('Beste erabiltzaile izen bat aukeratu'); 
+    window.history.go(-1);</script>";
   }
 ?>
