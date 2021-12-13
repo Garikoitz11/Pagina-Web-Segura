@@ -2,8 +2,10 @@
     session_start();
     $GureErabiltzaile = $_SESSION['izena'];
 
-    $conexion = mysqli_connect("db", "admin", "test", "database");
-    $erabiltzaile = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
+    $conexion = new mysqli("db", "admin", "test", "database");
+	$conexion->set_charset('utf8');
+
+    $kontsulta = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +26,8 @@
             </div>
         </header>
 		<main>
-        <?php $emaitza = mysqli_query($conexion, $erabiltzaile);
-                while($row=mysqli_fetch_assoc($emaitza)){?>
+		<?php $kontsultaBerria = $conexion->query($kontsulta);
+            while($row = $kontsultaBerria->fetch_row()){?>
 
         <div class="alerta" id="alerta"></div>
         <br>
@@ -40,14 +42,14 @@
 			<div class="formulario__grupo" id="grupo__nombre">
 				<label for="nombre" class="formulario__label">Erabiltzailea</label>
 				<div class="formulario__grupo-input">
-					<input class="formulario__input" name="erabiltzaile" id="usuario" value="<?php echo $row["Erabiltzailea"];?>" disabled>
+					<input class="formulario__input" name="erabiltzaile" id="usuario" value="<?php echo $row[0];?>" disabled>
 				</div>
 			</div>
 			<!-- Grupo: izena -->
 			<div class="formulario__grupo" id="grupo__nombre">
 				<label for="nombre" class="formulario__label">Izena</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="izena" id="nombre" value="<?php echo $row["Izena"];?>">
+					<input type="text" class="formulario__input" name="izena" id="nombre" value="<?php echo $row[1];?>">
 				</div>
 			</div>
 
@@ -55,7 +57,7 @@
 			<div class="formulario__grupo" id="grupo__abizena">
 				<label for="abizena" class="formulario__label">Abizena</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="abizena" id="abizena" value="<?php echo $row["Abizenak"];?>">
+					<input type="text" class="formulario__input" name="abizena" id="abizena" value="<?php echo $row[2];?>">
 					</div>
 			</div>
 
@@ -63,7 +65,7 @@
 			<div class="formulario__grupo" id="grupo__codigoPostal">
 				<label for="codigoPostal" class="formulario__label">Posta-kodea</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="posta-kodea" id="codigoPostal" value="<?php echo $row["PostaKodea"];?>">
+					<input type="text" class="formulario__input" name="posta-kodea" id="codigoPostal" value="<?php echo $row[3];?>">
 				</div>
 				<p class="formulario__input-error">El codigoPostal tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 			</div>
@@ -73,7 +75,7 @@
 			<div class="formulario__grupo" id="grupo__NAN">
 				<label for="NAN" class="formulario__label">NAN</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="NAN" id="NAN" onclick="averigua()" value="<?php echo $row["NAN"];?>">
+					<input type="text" class="formulario__input" name="NAN" id="NAN" onclick="averigua()" value="<?php echo $row[4];?>">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i> 
 				</div>
 				<p class="formulario__input-error">El DNI tiene que tener 8 numeros y una</p>
@@ -84,7 +86,7 @@
         	<div class="formulario__grupo" id="grupo__JaiotzaData">
            		 <label for="JaiotzaData" class="formulario__label">Jaiotza Data</label>
            		 <div class="formulario__grupo-input">
-               		 <input type="date" class="formulario__input" name="JaiotzaData" id="JaiotzaData" value="<?php echo $row["JaiotzaData"];?>">
+               		 <input type="date" class="formulario__input" name="JaiotzaData" id="JaiotzaData" value="<?php echo $row[5];?>">
                		 <i class="formulario__validacion-estado fas fa-times-circle"></i> 
            		 </div>
         	</div>
@@ -93,7 +95,7 @@
 			<div class="formulario__grupo" id="grupo__password">
 				<label for="password" class="formulario__label">Pasahitza</label>
 				<div class="formulario__grupo-input">
-					<input type="password" class="formulario__input" name="pasahitza" id="password" value="<?php echo $row["Pasahitza"];?>">
+					<input type="password" class="formulario__input" name="pasahitza" id="password" value="<?php echo $row[6];?>">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					<span id = "message1" style="color:red"> </span>
 				</div>
@@ -104,7 +106,7 @@
 			<div class="formulario__grupo" id="grupo__password2">
 				<label for="password2" class="formulario__label">Pasahitza errepikatu</label>
 				<div class="formulario__grupo-input">
-					<input type="password" class="formulario__input" name="pasahitza2" id="password2" value="<?php echo $row["Pasahitza"];?>">
+					<input type="password" class="formulario__input" name="pasahitza2" id="password2" value="<?php echo $row[6];?>">
 					<span id = "message2" style="color:red"> </span>
 				</div>
 				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
@@ -114,7 +116,7 @@
 			<div class="formulario__grupo" id="grupo__correo">
 				<label for="correo" class="formulario__label">Posta Elektronikoa</label>
 				<div class="formulario__grupo-input">
-					<input type="email" class="formulario__input" name="postaElektronikoa" id="correo" value="<?php echo $row["PostaElektronikoa"];?>">
+					<input type="email" class="formulario__input" name="postaElektronikoa" id="correo" value="<?php echo $row[7];?>">
 				</div>
 			</div>
 
@@ -122,7 +124,7 @@
 			<div class="formulario__grupo" id="grupo__telefono">
 				<label for="telefono" class="formulario__label">Mugikorra</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="mugikorra" id="telefono" value="<?php echo $row["Mugikorra"];?>">
+					<input type="text" class="formulario__input" name="mugikorra" id="telefono" value="<?php echo $row[8];?>">
 				</div>
 			</div>
 

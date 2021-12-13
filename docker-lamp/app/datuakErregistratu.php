@@ -5,32 +5,36 @@
     $password = "test";
     $db = "database";
 
-    $Erabiltzailea=$_POST['erabiltzaile'];
-    $Izena=$_POST['izena'];
-    $Abizena=$_POST['abizena'];
-    $PostaKodea=$_POST['posta-kodea'];
-    $NAN=$_POST['NAN'];
-    $JaiotzaData=$_POST['JaiotzaData'];
-    $Pasahitza=$_POST['pasahitza'];
-    $PostaElektronikoa=$_POST['postaElektronikoa'];
-    $Mugikorra=$_POST['mugikorra'];
+    $conn = new mysqli($hostname,$username,$password,$db);
     
-    
-    $conn = mysqli_connect($hostname,$username,$password,$db);
-    
-    if ($conn->connect_error) {
+    /*if ($conn->connect_error) {
       die("Database connection failed: " . $conn->connect_error);
-    }
+    }*/
   
-    $sartu = "INSERT INTO Erregistroa VALUES ('$Erabiltzailea','$Izena','$Abizena','$PostaKodea','$NAN','$JaiotzaData','$Pasahitza','$PostaElektronikoa','$Mugikorra')";
-    
-    $query = mysqli_query($conn, $sartu);
+    $conn->set_charset('utf8');
 
-    if($query){
-      echo "<script>alert('Erabiltzailea erregistratu da');
-      window.location.href='index.html'</script>";
-    }
-    else{
-      echo "<script>alert('Beste erabiltzaile izen bat aukeratu'); window.history.go(-1);</script>";
+    $Erabiltzailea=$conn->real_escape_string($_POST['erabiltzaile']);
+    $Izena=$conn->real_escape_string($_POST['izena']);
+    $Abizena=$conn->real_escape_string($_POST['abizena']);
+    $PostaKodea=$conn->real_escape_string($_POST['posta-kodea']);
+    $NAN=$conn->real_escape_string($_POST['NAN']);
+    $JaiotzaData=$conn->real_escape_string($_POST['JaiotzaData']);
+    $Pasahitza=$conn->real_escape_string($_POST['pasahitza']);
+    $PostaElektronikoa=$conn->real_escape_string($_POST['postaElektronikoa']);
+    $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
+
+    if($kontsultaBerria = $conn->prepare("INSERT INTO Erregistroa (Erabiltzailea, Izena, Abizenak, PostaKodea, NAN, JaiotzaData, Pasahitza, PostaElektronikoa, Mugikorra) VALUES (?,?,?,?,?,?,?,?,?)")){
+
+      $kontsultaBerria->bind_param('sssisissi', $Erabiltzailea, $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra);
+      $kontsultaBerria->execute();
+
+      if($kontsultaBerria){
+        echo "<script>alert('Erabiltzailea erregistratu da');
+        window.location.href='index.html'</script>";
+      }
+      else{
+        echo "<script>alert('Beste erabiltzaile izen bat aukeratu'); window.history.go(-1);</script>";
+      }
+
     }
 ?>

@@ -6,33 +6,34 @@
     $password = "test";
     $db = "database";
 
-    $Erabiltzailea=$_SESSION['izena'];
-    $Izena=$_POST['izena'];
-    $Abizena=$_POST['abizena'];
-    $PostaKodea=$_POST['posta-kodea'];
-    $NAN=$_POST['NAN'];
-    $JaiotzaData=$_POST['JaiotzaData'];
-    $Pasahitza=$_POST['pasahitza'];
-    $PostaElektronikoa=$_POST['postaElektronikoa'];
-    $Mugikorra=$_POST['mugikorra'];
+    $conn = new mysqli($hostname,$username,$password,$db);
     
-    
-    $conn = mysqli_connect($hostname,$username,$password,$db);
-    
-    if ($conn->connect_error) {
+    /*if ($conn->connect_error) {
       die("Database connection failed: " . $conn->connect_error);
-    }
-  
-    $sartu = "UPDATE Erregistroa SET Izena = '$Izena', Abizenak = '$Abizena', PostaKodea = '$PostaKodea', NAN = '$NAN', JaiotzaData = '$JaiotzaData', Pasahitza = '$Pasahitza', PostaElektronikoa = '$PostaElektronikoa', Mugikorra = '$Mugikorra' WHERE Erabiltzailea = '$Erabiltzailea'";
-   
+    }*/
+    $conn->set_charset('utf8');
 
-    $query = mysqli_query($conn, $sartu);
+    $Erabiltzailea=$_SESSION['izena'];
+    $Izena=$conn->real_escape_string($_POST['izena']);
+    $Abizena=$conn->real_escape_string($_POST['abizena']);
+    $PostaKodea=$conn->real_escape_string($_POST['posta-kodea']);
+    $NAN=$conn->real_escape_string($_POST['NAN']);
+    $JaiotzaData=$conn->real_escape_string($_POST['JaiotzaData']);
+    $Pasahitza=$conn->real_escape_string($_POST['pasahitza']);
+    $PostaElektronikoa=$conn->real_escape_string($_POST['postaElektronikoa']);
+    $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
+    
+    if($kontsultaBerria = $conn->prepare("UPDATE Erregistroa SET Izena = ?, Abizenak = ?, PostaKodea = ?, NAN = ?, JaiotzaData = ?, Pasahitza = ?, PostaElektronikoa = ?, Mugikorra = ? WHERE Erabiltzailea = ?")){
 
-    if($query){
-      echo "<script>alert('Erabiltzailea eguneratu da');
-      window.location.href='index.html'</script>";
-    }
-    else{
-      echo "<script>alert('Ezin izan da erabiltzailea eguneratu'); window.history.go(-1);</script>";
+      $kontsultaBerria->bind_param('ssissssis', $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra, $Erabiltzailea);
+      $kontsultaBerria->execute();
+
+      if($kontsultaBerria){
+        echo "<script>alert('Erabiltzailea eguneratu da');
+        window.location.href='index.html'</script>";
+      }
+      else{
+        echo "<script>alert('Ezin izan da erabiltzailea eguneratu'); window.history.go(-1);</script>";
+      }
     }
 ?>
