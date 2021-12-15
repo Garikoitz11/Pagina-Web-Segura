@@ -16,10 +16,10 @@ header("X-Content-Type-Options: nosniff");
 <body>
 	<header class="header">
 		<div class="container logo-nav-container">
-			<a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
+			<a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
 			<nav class="navigation">
 				<ul>
-					<li><a href="Hasisaioa.html" target="_self">HASI SAIOA</a></li> 
+					<li><a href="Hasisaioa.php" target="_self">HASI SAIOA</a></li> 
 				</ul>
 			</nav>                    
 		</div>
@@ -129,7 +129,7 @@ header("X-Content-Type-Options: nosniff");
 			<div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="baldintzak" id="terminos">
-					<a href="Erosketabaldintzak.html">Baldintzak</a> onartu
+					<a href="Erosketabaldintzak.php">Baldintzak</a> onartu
 				</label>
 			</div>
 			
@@ -143,7 +143,7 @@ header("X-Content-Type-Options: nosniff");
 		</fieldset>
 	</main>
 	<div class="hemen">
-		Kontu bat eginda duzu? Hasi saioa <a href="Hasisaioa.html">hemen</a>
+		Kontu bat eginda duzu? Hasi saioa <a href="Hasisaioa.php">hemen</a>
 	</div>
 	 
 	
@@ -151,7 +151,7 @@ header("X-Content-Type-Options: nosniff");
 		<div class="ultimos-botones">
 			<nav>
 				<ul>
-					<li><a href="Erosketabaldintzak.html" target="_self">Erosketa baldintzak</a></li>
+					<li><a href="Erosketabaldintzak.php" target="_self">Erosketa baldintzak</a></li>
 					<li><a href="https://twitter.com/gartxon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @gartxon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
 				</ul>
 			</nav> 
@@ -161,7 +161,7 @@ header("X-Content-Type-Options: nosniff");
 				<img src="irudiak/footer1.png" style="width:100%" alt="Ordainketa segurua">
 			</div>
 			<div class="copyright">
-				&#169 Todos los Derechos Reservados |<a href="index.html">Gartxon</a>
+				&#169 Todos los Derechos Reservados |<a href="index.php">Gartxon</a>
 			</div>
 		</div>
 	</footer>

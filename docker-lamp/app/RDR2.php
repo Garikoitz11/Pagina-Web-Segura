@@ -1,4 +1,31 @@
 <?php
+session_start();
+$GureErabiltzaile = $_SESSION['izena'];
+
+$conexion = mysqli_connect("db", "admin", "test", "database");
+$erabiltzaile = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
+
+if(isset($_SESSION['denbora']) ) {
+
+    //Tiempo en segundos para dar vida a la sesión.
+    $inactivo = 5;//20min en este caso.
+
+    //Calculamos tiempo de vida inactivo.
+    $vida_session = time() - $_SESSION['denbora'];
+
+        //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+        if($vida_session > $inactivo)
+        {
+            //Removemos sesión.
+            session_unset();
+            //Destruimos sesión.
+            session_destroy();              
+            //Redirigimos pagina.
+            echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";  
+            exit();
+        }
+
+}
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>
@@ -15,12 +42,29 @@ header("X-Content-Type-Options: nosniff");
     <body>
         <header class="header">
             <div class="container logo-nav-container">
-                <a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
-                
-                    <ul class="navigation" >
-                        <li><a href="erregistratu.html" target="_self">ERREGISTRATU</a></li> 
-                        <li><a href="Hasisaioa.html" target="_self">HASI SAIOA</a></li> 
-                    </ul>
+                <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
+                <?php
+
+                        $Erabiltzaile = $_SESSION['izena'] ;
+
+                        if ($Erabiltzaile == null || $Erabiltzaile == '') {
+                        //echo '<a href="cerrarSesion.php" target="_self" class= "hola"> SALIR </a>';
+                        ?>
+                        <li><a href="erregistratu.php" target="_self" >ERREGISTRATU</a></li>
+                        <li><a href="Hasisaioa.php" target="_self" >HASI SAIOA</a></li>
+                        <?php
+                        }else{
+                        //echo '<a href="erregistratu.php" target="_self" class= "hola">ERREGISTRATU</a>';
+                        //echo '<a href="Hasisaioa.php" target="_self" class= "hola">HASI SAIOA</a>';
+                        ?>
+                        <li><a href="cerrarSesion.php" target="_self" > SAIOA ITXI </a></lio>
+                  <?php  }
+                        ?>
+                        <!-- <li><a href="cerrarSesion.php" target="_self"> SALIR</a></li> 
+                        <li><a href="erregistratu.php" target="_self">ERREGISTRATU</a></li> 
+                        <li><a href="Hasisaioa.php" target="_self">HASI SAIOA</a></li> 
+                    </ul> -->
+                </nav>  
                                 
             </div>
         </header>
@@ -33,7 +77,7 @@ header("X-Content-Type-Options: nosniff");
         <div class="cuerpo1"><strong>Bideojoko mota:</strong>&nbsp;Akziozkoa </div>
         <div class="cuerpo"><strong>PEGI:</strong>&nbsp;18</div>
         <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;15€</div><br>
-        <input class="erosi" type="submit" value="erosi" onclick = "alert('Produktua erosi duzu.');window.location.href='index.html'"/>
+        <input class="erosi" type="submit" value="erosi" onclick = "alert('Produktua erosi duzu.');window.location.href='index.php'"/>
     </p>
 
         </nav>
@@ -43,7 +87,7 @@ header("X-Content-Type-Options: nosniff");
             <div class="ultimos-botones">
                 
                     <ul>
-                        <li><a href="Erosketabaldintzak.html" target="_self">Erosketa baldintzak</a></li>
+                        <li><a href="Erosketabaldintzak.php" target="_self">Erosketa baldintzak</a></li>
                         <li><a href="https://twitter.com/gartxon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @gartxon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
                     </ul>
             </div>
