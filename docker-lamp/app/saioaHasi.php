@@ -16,7 +16,6 @@
 
         $Erabiltzaile = $conn->real_escape_string($_POST['erabiltzaile']);
         $Pasahitza = $conn->real_escape_string($_POST['pasahitza']);
-        $_SESSION['izena'] = $Erabiltzaile;
         $data = date('m-d-Y h:i:s a', time());
 
         if ($fp = fopen("log.txt", "a")){
@@ -31,13 +30,19 @@
             $emaitza = $kontsultaBerria->get_result();
 
             if($emaitza->num_rows == 1){
-                echo "<script>window.location.href='datuakAldatu.php'</script>";
+                //echo "<script>window.location.href='datuakAldatu.php'</script>";
+                $_SESSION['izena'] = $Erabiltzaile;
+                $_SESSION['denbora'] = time();
+                echo "<script>alert('Ongi etorri $Erabiltzaile');window.location.href='index.php'</script>";
+                
+
             }
             else{
-                echo "<script>alert('Erabiltzailea ezin izan du saioa hasi');
-                window.location.href='index.html'</script>";
+                echo "<script>alert('Erabiltzailea ezin izan du saioa hasi'); window.history.go(-1);</script>";
             }
             $kontsultaBerria->close();
         }
+        
+        
     #}
 ?>

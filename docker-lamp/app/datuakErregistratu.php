@@ -17,8 +17,10 @@
   $kontsultaBerria = $conn->query("INSERT INTO Erregistroa VALUES ('$Erabiltzailea', '$Izena', '$Abizena', '$PostaKodea', '$NAN', '$JaiotzaData', '$Pasahitza', '$PostaElektronikoa', '$Mugikorra')");
 
   if($kontsultaBerria){
+    $_SESSION['izena'] = $Erabiltzaile;
+    $_SESSION['denbora'] = time();
     echo "<script>alert('Erabiltzailea erregistratu da');
-    window.location.href='index.html'</script>";
+    window.location.href='index.php'</script>";
   }
   else{
     echo hola;

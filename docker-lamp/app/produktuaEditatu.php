@@ -31,4 +31,6 @@
         echo "<script>alert('Ezin izan da produktua eguneratu'); window.history.go(-1);</script>";
       }
     }
+
+    
 ?>

@@ -1,4 +1,33 @@
 <?php
+session_start();
+
+if(isset($_SESSION['denbora'])) {
+
+ //Tiempo en segundos para dar vida a la sesión.
+ $inactivo = 5;//20min en este caso.
+
+ //Calculamos tiempo de vida inactivo.
+ $vida_session = time() - $_SESSION['denbora'];
+
+     //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+     if($vida_session > $inactivo)
+     {
+         //Removemos sesión.
+         session_unset();
+         //Destruimos sesión.
+         session_destroy();              
+         //Redirigimos pagina.
+       
+         echo "<script>alert('Saioa itxi egin da');</script>";
+             
+         
+
+         exit();
+     }
+
+}
+$_SESSION['denbora'] = time();
+
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>
@@ -17,21 +46,45 @@ header("X-Content-Type-Options: nosniff");
                 <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
                 <nav class="navigation">
                     <ul>
+                        <?php
+
+                        $Erabiltzaile = $_SESSION['izena'] ;
+
+                        if ($Erabiltzaile == null || $Erabiltzaile == '') {
+                        //echo '<a href="cerrarSesion.php" target="_self" class= "hola"> SALIR </a>';
+                        ?>
+                        <li><a href="erregistratu.php" target="_self" >ERREGISTRATU</a></li>
+                        <li><a href="Hasisaioa.php" target="_self" >HASI SAIOA</a></li>
+                        <?php
+                        }else{
+                        //echo '<a href="erregistratu.php" target="_self" class= "hola">ERREGISTRATU</a>';
+                        //echo '<a href="Hasisaioa.php" target="_self" class= "hola">HASI SAIOA</a>';
+                        ?>
+                        <li><a href="cerrarSesion.php" target="_self" > SAIOA ITXI </a></lio>
+                  <?php  }
+                        ?>
+                        <!-- <li><a href="cerrarSesion.php" target="_self"> SALIR</a></li> 
                         <li><a href="erregistratu.php" target="_self">ERREGISTRATU</a></li> 
                         <li><a href="Hasisaioa.php" target="_self">HASI SAIOA</a></li> 
-                    </ul>
-                </nav>                    
+                    </ul> -->
+                </nav>                                  
             </div>
         </header>
 
         <main class="main">
             <div class="container">
                 <div class="column menu">
-                    <nav>
+                <nav>
                         <ul>
                             <li><a href="index.php" target="_self">Gure produktuak</a></li>        
                             <li><a href="produktuakKontsultatu.php" target="_self">Erabiltzaileen produktuak</a></li>
                             <li><a href="sartuProduktua.php" target="_self">Sartu produktuak</a></li>
+                            <?php
+                            if ($Erabiltzaile != null || $Erabiltzaile != '') {
+                            ?>
+                                <li><a href="datuakAldatu.php" target="_self">Zure datuak aldatu</a></li>
+                            <?php } ?>
+
                         </ul>
                     </nav>
                 </div>

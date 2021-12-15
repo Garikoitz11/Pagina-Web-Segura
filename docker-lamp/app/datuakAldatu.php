@@ -6,6 +6,28 @@
 	$conexion->set_charset('utf8');
 
     $kontsulta = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
+	if(isset($_SESSION['denbora']) ) {
+
+        //Tiempo en segundos para dar vida a la sesión.
+        $inactivo = 5;//20min en este caso.
+
+        //Calculamos tiempo de vida inactivo.
+        $vida_session = time() - $_SESSION['denbora'];
+
+            //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+            if($vida_session > $inactivo)
+            {
+                //Removemos sesión.
+                session_unset();
+                //Destruimos sesión.
+                session_destroy();              
+                //Redirigimos pagina.
+				echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";                
+                exit();
+            }
+
+    }
+    $_SESSION['denbora'] = time();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +44,7 @@
     <body>
 		<header class="header">
             <div class="container logo-nav-container">
-                <a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>                   
+                <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>                   
             </div>
         </header>
 		<main>
@@ -132,7 +154,7 @@
 			<div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="baldintzak" id="terminos">
-					<a href="Erosketabaldintzak.html">Baldintzak</a> onartu
+					<a href="Erosketabaldintzak.php">Baldintzak</a> onartu
 				</label>
 			</div>
 			

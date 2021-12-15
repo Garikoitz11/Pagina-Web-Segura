@@ -16,7 +16,7 @@
        
         if($kontsultaBerria){
             echo "<script>alert('Produktua igo da');
-            window.location.href='index.html'</script>";
+            window.location.href='index.php'</script>";
         }
         else{
             echo "<script>alert('Ezin izan da produktua igo');

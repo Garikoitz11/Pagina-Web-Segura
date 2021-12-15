@@ -14,10 +14,10 @@ header("X-Content-Type-Options: nosniff");
     <body>
         <header class="header">
             <div class="container logo-nav-container">
-                <a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
+                <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
                 <nav class="navigation">
                     <ul>
-                        <li><a href="erregistratu.html" target="_self">ERREGISTRATU</a></li> 
+                        <li><a href="erregistratu.php" target="_self">ERREGISTRATU</a></li> 
                     </ul>
                 </nav>                    
             </div>
@@ -52,13 +52,13 @@ header("X-Content-Type-Options: nosniff");
     </nav>
     <br>
     <div class="hemen">
-		Oraindik ez zara erregistratu?<a href="erregistratu.html"> Erregistratu</a>
+		Oraindik ez zara erregistratu?<a href="erregistratu.php"> Erregistratu</a>
 	</div>
     <footer class="footer-container">
         <div class="ultimos-botones">
             <nav>
                 <ul>
-                    <li><a href="Erosketabaldintzak.html" target="_self">Erosketa baldintzak</a></li>
+                    <li><a href="Erosketabaldintzak.php" target="_self">Erosketa baldintzak</a></li>
                     <li><a href="https://twitter.com/gartxon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @gartxon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
                 </ul>
             </nav> 
