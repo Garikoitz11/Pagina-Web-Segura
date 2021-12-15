@@ -24,5 +24,4 @@
         }
         $kontsultaBerria->close();
     }
-
 ?>

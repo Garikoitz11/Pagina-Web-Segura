@@ -26,7 +26,6 @@ if(isset($_SESSION['denbora']) ) {
         }
 
 }
-$_SESSION['denbora'] = time();
 
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");

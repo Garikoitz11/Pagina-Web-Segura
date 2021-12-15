@@ -34,7 +34,7 @@
                 echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
                 exit();
             }
-
+    }
 ?>
 
 <!DOCTYPE html>

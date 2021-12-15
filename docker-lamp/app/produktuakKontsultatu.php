@@ -24,8 +24,6 @@
             }
 
     }
-    $_SESSION['denbora'] = time();
-
 ?>
 
 <!DOCTYPE html>

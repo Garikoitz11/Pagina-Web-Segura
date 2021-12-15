@@ -21,12 +21,10 @@ if(isset($_SESSION['denbora']) ) {
             //Destruimos sesión.
             session_destroy();              
             //Redirigimos pagina.
-echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
+            echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
             exit();
         }
-
 }
-$_SESSION['denbora'] = time();
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>

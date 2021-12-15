@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['denbora'])) {
-
+    
  //Tiempo en segundos para dar vida a la sesión.
  $inactivo = 5;//20min en este caso.
 
@@ -17,16 +17,11 @@ if(isset($_SESSION['denbora'])) {
          //Destruimos sesión.
          session_destroy();              
          //Redirigimos pagina.
-       
-         echo "<script>alert('Saioa itxi egin da');</script>";
-             
-         
-
+         echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";
          exit();
      }
 
 }
-$_SESSION['denbora'] = time();
 
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
@@ -48,19 +43,19 @@ header("X-Content-Type-Options: nosniff");
                     <ul>
                         <?php
 
-                        $Erabiltzaile = $_SESSION['izena'] ;
+                        //$Erabiltzaile = $_SESSION['izena'] ;
 
-                        if ($Erabiltzaile == null || $Erabiltzaile == '') {
+                        if (isset($_SESSION['izena'])) {
                         //echo '<a href="cerrarSesion.php" target="_self" class= "hola"> SALIR </a>';
                         ?>
-                        <li><a href="erregistratu.php" target="_self" >ERREGISTRATU</a></li>
-                        <li><a href="Hasisaioa.php" target="_self" >HASI SAIOA</a></li>
+                        <li><a href="cerrarSesion.php" target="_self" > SAIOA ITXI</a></li>
                         <?php
                         }else{
                         //echo '<a href="erregistratu.php" target="_self" class= "hola">ERREGISTRATU</a>';
                         //echo '<a href="Hasisaioa.php" target="_self" class= "hola">HASI SAIOA</a>';
                         ?>
-                        <li><a href="cerrarSesion.php" target="_self" > SAIOA ITXI </a></lio>
+                        <li><a href="erregistratu.php" target="_self" >ERREGISTRATU</a></li>
+                        <li><a href="Hasisaioa.php" target="_self" >HASI SAIOA</a></li>
                   <?php  }
                         ?>
                         <!-- <li><a href="cerrarSesion.php" target="_self"> SALIR</a></li> 

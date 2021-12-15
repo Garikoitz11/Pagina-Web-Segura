@@ -24,9 +24,7 @@
 				echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
                 exit();
             }
-
     }
-    $_SESSION['denbora'] = time();
 ?>
 
 <!DOCTYPE html>
