@@ -1,3 +1,7 @@
+<?php
+header("X-XSS-Protection: 1; mode=block");
+header("X-Content-Type-Options: nosniff");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,16 +25,16 @@
             </div>
         </header>
         <main> 
-        <div class="titulo"> RAZER KRAKEN PRO</div>
+        <div class="titulo">XIAOMI REDMI NOTE 5</div>
         
         <nav class="columnas">   
-        <p> <div class="foto"><img src="irudiak/razerkrakenpro.jpg" width="250px" alt="Razer Kraken Pro"> </div></p>
+        <p> <div class="foto"><img src="irudiak/xiaomiredminote5.jpg" width="250px" alt="Xiaomi Redmi Note 5"> </div></p>
         <p>
-        <div class="cuerpo1"><strong>Erosoak:</strong>&nbsp;Bai</div>
-        <div class="cuerpo"><strong>Mikrofonoa:</strong>&nbsp;Bai</div>
-        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;50€</div><br>
+        <div class="cuerpo1"><strong> Sistema operatiboa:</strong>&nbsp;Android</div>
+        <div class="cuerpo"><strong>RAM:</strong>&nbsp;4GB</div>
+        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;140€</div><br>
         <input class="erosi" type="submit" value="erosi" onclick = "alert('Produktua erosi duzu.');window.location.href='index.html'"/>
-        </p>
+    </p>
         </nav>
         </main>
         
@@ -54,26 +58,4 @@
     </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 

@@ -1,3 +1,7 @@
+<?php
+header("X-XSS-Protection: 1; mode=block");
+header("X-Content-Type-Options: nosniff");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,19 +25,19 @@
             </div>
         </header>
         <main> 
-        <div class="titulo"> ASUS ROG GR 8 II</div>
+        <div class="titulo"> RAZER KRAKEN PRO</div>
         
         <nav class="columnas">   
-        <p> <div class="foto"><img src="irudiak/asusroggr8.jpeg" width="250px" alt="Asus Rog GR8 II"> </div></p>
+        <p> <div class="foto"><img src="irudiak/razerkrakenpro.jpg" width="250px" alt="Razer Kraken Pro"> </div></p>
         <p>
-        <div class="cuerpo1"><strong>Sistema operatiboa:</strong>&nbsp;Microsoft Windows</div>
-        <div class="cuerpo"><strong>RAM:</strong>&nbsp;16GB</div>
-        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;799€</div><br>
+        <div class="cuerpo1"><strong>Erosoak:</strong>&nbsp;Bai</div>
+        <div class="cuerpo"><strong>Mikrofonoa:</strong>&nbsp;Bai</div>
+        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;50€</div><br>
         <input class="erosi" type="submit" value="erosi" onclick = "alert('Produktua erosi duzu.');window.location.href='index.html'"/>
-    </p>
+        </p>
         </nav>
         </main>
-
+        
         <footer class="footer-container">
             <div class="ultimos-botones">
                 
@@ -57,9 +61,23 @@
 
 
 
-<img style= "margin-left:300px; margin-top: 20px;" src="irudiak/asusroggr8.jpeg" width="200px" alt="Asus Rog GR8 II"></a>
-<div id="mugitu"><h3>Asus Rog GR8 II</h3><br>
-<div><strong>Sistema operatiboa:</strong>&nbsp;Microsoft Windows</div><br>
-<div><strong>RAM-a:</strong>&nbsp;16GB</div><br>
-<div><strong>Prezioa:</strong>&nbsp;799€</div><br>
-<a href="Ordaindu.html" style="text-decoration: none; c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+

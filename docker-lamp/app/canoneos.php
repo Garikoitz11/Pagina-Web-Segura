@@ -1,3 +1,7 @@
+<?php
+header("X-XSS-Protection: 1; mode=block");
+header("X-Content-Type-Options: nosniff");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,14 +25,14 @@
             </div>
         </header>
         <main> 
-        <div class="titulo"> IPHONE XS MAX</div>
+        <div class="titulo"> CANON EOS 200D</div>
         
         <nav class="columnas">   
-        <p> <div class="foto"><img src="irudiak/iphonexrmax.jpg" width="250px" alt="Iphone XS Max"> </div></p>
+        <p> <div class="foto"><img src="irudiak/canoneos.jpg" width="250px" alt="Canon EOS 200D"> </div></p>
         <p>
-        <div class="cuerpo1"><strong>Sistema operatiboa:</strong>&nbsp;IOS</div>
-        <div class="cuerpo"><strong>Pantailaren neurria:</strong>&nbsp;6,5</div>
-        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;789€</div><br>
+        <div class="cuerpo1"><strong>MegaPixelak:</strong>&nbsp;24,2</div>
+        <div class="cuerpo"><strong>Tiroak seriean:</strong>&nbsp;5 fps</div>
+        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;699€</div><br>
         <input class="erosi" type="submit" value="erosi" onclick = "alert('Produktua erosi duzu.');window.location.href='index.html'"/>
     </p>
         </nav>
@@ -53,8 +57,5 @@
         </footer>
     </body>
 </html>
-
-
-
 
 

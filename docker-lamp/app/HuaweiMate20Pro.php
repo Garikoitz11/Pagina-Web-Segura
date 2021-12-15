@@ -1,3 +1,7 @@
+<?php
+header("X-XSS-Protection: 1; mode=block");
+header("X-Content-Type-Options: nosniff");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,18 +25,17 @@
             </div>
         </header>
         <main> 
-        <div class="titulo"> HP BS017</div>
+        <div class="titulo"> HUAWEI MATE 20 PRO</div>
         
         <nav class="columnas">   
-        <p> <div class="foto"><img src="irudiak/hpbs017.jpg" width="250px" alt="HP BS017"> </div></p>
+        <p> <div class="foto"><img src="irudiak/huaweimate20pro.jpg" width="250px" alt="Huawei Mate 20 Pro"> </div></p>
         <p>
-        <div class="cuerpo1"><strong>Sistema operatiboa:</strong>&nbsp;Microsoft Windows</div>
-        <div class="cuerpo"><strong>RAM:</strong>&nbsp;4GB</div>
-        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;999€</div><br>
+        <div class="cuerpo1"><strong>Sistema operatiboa:</strong>&nbsp;Android</div>
+        <div class="cuerpo"><strong>RAM:</strong>&nbsp;8GB</div>
+        <div class="cuerpo"><strong>Prezioa:</strong>&nbsp;490€</div><br>
         <input class="erosi" type="submit" value="erosi" onclick = "alert('Produktua erosi duzu.');window.location.href='index.html'"/>
-        
-        </p>
-
+    </p>
+    
         </nav>
         </main>
         
@@ -55,4 +58,5 @@
         </footer>
     </body>
 </html>
+
 
