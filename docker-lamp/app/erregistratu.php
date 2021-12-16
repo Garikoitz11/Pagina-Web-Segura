@@ -127,9 +127,9 @@ header("X-Content-Type-Options: nosniff");
 
 			<!-- Grupo: Datu Bankarioak -->
 			<div class="formulario__grupo" id="grupo__datosBancarios">
-				<label for="datosBancarios" class="formulario__label">Datu Bankarioak </label>
+				<label for="datosBancarios" class="formulario__label">Datu Bankarioak</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="datuBankarioak " id="datosBancarios" placeholder="ES2114640100722030876293">
+					<input type="text" class="formulario__input" name="datuBankarioak" id="datosBancarios" placeholder="ES2114640100722030876293">
 				</div>
 			</div>
 

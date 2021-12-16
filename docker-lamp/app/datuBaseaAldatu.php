@@ -19,10 +19,11 @@
     $Pasahitza=$conn->real_escape_string($_POST['pasahitza']);
     $PostaElektronikoa=$conn->real_escape_string($_POST['postaElektronikoa']);
     $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
+    $Bankua=$conn->real_escape_string($_POST['datuBankarioak']);
     
-    $kontsultaBerria = $conn->prepare("UPDATE Erregistroa SET Izena = ?, Abizenak = ?, PostaKodea = ?, NAN = ?, JaiotzaData = ?, Pasahitza = ?, PostaElektronikoa = ?, Mugikorra = ? WHERE Erabiltzailea = ?");
+    $kontsultaBerria = $conn->prepare("UPDATE Erregistroa SET Izena = ?, Abizenak = ?, PostaKodea = ?, NAN = ?, JaiotzaData = ?, Pasahitza = ?, PostaElektronikoa = ?, Mugikorra = ?, BankuDatuak = ? WHERE Erabiltzailea = ?");
 
-    $kontsultaBerria->bind_param('ssissssis', $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra, $Erabiltzailea);
+    $kontsultaBerria->bind_param('ssissssis', $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra, $Erabiltzailea, $Bankua);
     $kontsultaBerria->execute();
 
     if($kontsultaBerria){
