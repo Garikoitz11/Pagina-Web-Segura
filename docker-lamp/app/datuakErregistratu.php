@@ -14,8 +14,9 @@
   $Pasahitza=$conn->real_escape_string($_POST['pasahitza']);
   $PostaElektronikoa=$conn->real_escape_string($_POST['postaElektronikoa']);
   $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
+  $Bankua=$conn->real_escape_string($_POST['datuBankarioak']); 
 
-  $kontsultaBerria = $conn->query("INSERT INTO Erregistroa VALUES ('$Erabiltzailea', '$Izena', '$Abizena', '$PostaKodea', '$NAN', '$JaiotzaData', '$Pasahitza', '$PostaElektronikoa', '$Mugikorra')");
+  $kontsultaBerria = $conn->query("INSERT INTO Erregistroa VALUES ('$Erabiltzailea', '$Izena', '$Abizena', '$PostaKodea', '$NAN', '$JaiotzaData', '$Pasahitza', '$PostaElektronikoa', '$Mugikorra', '$Bankua')");
 
   if($kontsultaBerria){
     $_SESSION['izena'] = $Erabiltzailea;
@@ -25,7 +26,6 @@
     window.location.href='index.php'</script>";
   }
   else{
-    echo hola;
     echo "<script>alert('Beste erabiltzaile izen bat aukeratu'); 
     window.history.go(-1);</script>";
   }

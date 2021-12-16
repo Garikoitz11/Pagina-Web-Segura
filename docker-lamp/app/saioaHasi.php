@@ -16,12 +16,6 @@
 
         $Erabiltzaile = $conn->real_escape_string($_POST['erabiltzaile']);
         $Pasahitza = $conn->real_escape_string($_POST['pasahitza']);
-        $data = date('m-d-Y h:i:s a', time());
-
-        if ($fp = fopen("log.txt", "a")){
-            fwrite($fp, "Yo muy bien, ¿Y tú?");
-        }
-        fclose($fp);
 
         if($kontsultaBerria = $conn->prepare("SELECT * FROM Erregistroa WHERE Erabiltzailea = ? AND Pasahitza = ?")){
 

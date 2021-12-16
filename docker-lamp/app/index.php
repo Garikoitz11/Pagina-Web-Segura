@@ -20,6 +20,9 @@ if(isset($_SESSION['denbora'])) {
          echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";
          exit();
      }
+     else{
+        $_SESSION['denbora'] = time();
+     }
 
 }
 
