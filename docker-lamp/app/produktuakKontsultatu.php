@@ -2,6 +2,28 @@
     $conn = new mysqli("db", "admin", "test", "database");
     $conn->set_charset('utf8');
     $kontsulta = "SELECT Kodea, Izena, Prezioa FROM Produktuak"; 
+    session_start();
+    if(isset($_SESSION['denbora']) ) {
+
+        //Tiempo en segundos para dar vida a la sesión.
+        $inactivo = 5;//20min en este caso.
+
+        //Calculamos tiempo de vida inactivo.
+        $vida_session = time() - $_SESSION['denbora'];
+
+            //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+            if($vida_session > $inactivo)
+            {
+                //Removemos sesión.
+                session_unset();
+                //Destruimos sesión.
+                session_destroy();              
+                //Redirigimos pagina.
+                echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
+                exit();
+            }
+
+    }
 ?>
 
 <!DOCTYPE html>

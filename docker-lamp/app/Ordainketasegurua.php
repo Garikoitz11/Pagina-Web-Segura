@@ -1,4 +1,30 @@
 <?php
+session_start();
+$GureErabiltzaile = $_SESSION['izena'];
+
+$conexion = mysqli_connect("db", "admin", "test", "database");
+$erabiltzaile = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
+
+if(isset($_SESSION['denbora']) ) {
+
+    //Tiempo en segundos para dar vida a la sesión.
+    $inactivo = 5;//20min en este caso.
+
+    //Calculamos tiempo de vida inactivo.
+    $vida_session = time() - $_SESSION['denbora'];
+
+        //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+        if($vida_session > $inactivo)
+        {
+            //Removemos sesión.
+            session_unset();
+            //Destruimos sesión.
+            session_destroy();              
+            //Redirigimos pagina.
+            echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
+            exit();
+        }
+}
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>
