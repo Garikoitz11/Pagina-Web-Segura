@@ -17,7 +17,7 @@
         <header class="header">
             <br>
             <div class="conimg">
-                <a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
+                <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
             </div>
             <br>
         </header>
@@ -37,7 +37,7 @@
 
         <footer>
             <div class="copyright">
-                &#169 Todos los Derechos Reservados |<a href="index.html">Gartxon</a>
+                &#169 Todos los Derechos Reservados |<a href="index.php">Gartxon</a>
             </div>
         </footer>
     </body>

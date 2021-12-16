@@ -22,7 +22,7 @@
     <body>
 		<header class="header">
             <div class="container logo-nav-container">
-                <a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>                   
+                <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>                   
             </div>
         </header>
 		<main>
@@ -126,16 +126,25 @@
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" name="mugikorra" id="telefono" value="<?php echo $row[8];?>">
 				</div>
+			</div>		
+
+			<!-- Grupo: Datu Bankarioak -->
+			<div class="formulario__grupo" id="grupo__telefono">
+				<label for="datosBancarios" class="formulario__label">Datu Bankarioak</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="datuBankarioak" id="datosBancarios" value="<?php echo $row[9];?>">
+				</div>
 			</div>
+
 
 			<!-- Grupo: baldintzak -->
 			<div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="baldintzak" id="terminos">
-					<a href="Erosketabaldintzak.html">Baldintzak</a> onartu
+					<a href="Erosketabaldintzak.php">Baldintzak</a> onartu
 				</label>
 			</div>
-			
+						
 			<!-- Boton Enviar-->
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
 				<button type="button" onclick= "validarFormulario();" class="formulario__btn" value="sartuProduktua">Txertatu</button>

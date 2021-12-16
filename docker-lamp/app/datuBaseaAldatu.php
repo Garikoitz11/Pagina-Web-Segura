@@ -27,7 +27,7 @@
 
     if($kontsultaBerria){
       echo "<script>alert('Erabiltzailea eguneratu da');
-      window.location.href='index.html'</script>";
+      window.location.href='index.php'</script>";
     }
     else{
       echo "<script>alert('Ezin izan da erabiltzailea eguneratu'); window.history.go(-1);</script>";

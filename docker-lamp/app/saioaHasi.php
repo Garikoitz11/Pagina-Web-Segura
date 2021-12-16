@@ -35,7 +35,7 @@
             }
             else{
                 echo "<script>alert('Erabiltzailea ezin izan du saioa hasi');
-                window.location.href='index.html'</script>";
+                window.location.href='index.php'</script>";
             }
             $kontsultaBerria->close();
         }

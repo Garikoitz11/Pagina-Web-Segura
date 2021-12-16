@@ -15,11 +15,11 @@ header("X-Content-Type-Options: nosniff");
 <body>
 	<header class="header">
 		<div class="container logo-nav-container">
-			<a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
+			<a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
 			<nav class="navigation">
 				<ul>
-					<li><a href="erregistratu.html" target="_self">ERREGISTRATU</a></li> 
-                    <li><a href="Hasisaioa.html" target="_self">HASI SAIOA</a></li> 
+					<li><a href="erregistratu.php" target="_self">ERREGISTRATU</a></li> 
+                    <li><a href="Hasisaioa.php" target="_self">HASI SAIOA</a></li> 
 				</ul>
 			</nav>                    
 		</div>

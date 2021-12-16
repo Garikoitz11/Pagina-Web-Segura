@@ -15,7 +15,7 @@ header("X-Content-Type-Options: nosniff");
         <header class="header">
             <br>
             <div class="conimg">
-                <a href="index.html" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
+                <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
             </div>
             <br>
         </header>
