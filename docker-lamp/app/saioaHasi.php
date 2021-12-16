@@ -38,7 +38,8 @@
 
             }
             else{
-                echo "<script>alert('Erabiltzailea ezin izan du saioa hasi'); window.history.go(-1);</script>";
+                echo "<script>alert('Erabiltzailea ezin izan du saioa hasi');
+                window.location.href='index.php'</script>";
             }
             $kontsultaBerria->close();
         }

@@ -66,8 +66,7 @@ header("X-Content-Type-Options: nosniff");
                         <li><a href="erregistratu.php" target="_self">ERREGISTRATU</a></li> 
                         <li><a href="Hasisaioa.php" target="_self">HASI SAIOA</a></li> 
                     </ul> -->
-                </nav>             
-                                
+                </nav>                                
             </div>
         </header>
         <main> 

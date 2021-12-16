@@ -99,6 +99,16 @@ function validarPasahitza(parametro){
     }
 }
 
+//Funcion para datuBankarioak
+function validarDatuBankarioak(parametro){
+    var patron= /^[a-zA-Z]{2}[0-9]{22}$/;
+    if(parametro.search(patron)){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 function validarFormulario(){
    
    var formulario = document.addForm; 
@@ -237,6 +247,20 @@ function validarFormulario(){
         else{
         document.getElementById("alerta").innerHTML = "";
         }
+
+        if(formulario.datosBancarios.value == ""){
+            document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, datu Bankarioak sartu.</div>';
+            formulario.datosBancarios.focus();
+            return false;
+            } else if(validarDatuBankarioak(formulario.datosBancarios.value)== false){
+                document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, datu bankarioak ondo sartu.</div>';
+                formulario.datosBancarios.value = "";
+                formulario.datosBancarios.focus();
+                return false;
+            }
+            else{
+            document.getElementById("alerta").innerHTML = "";
+            }
     
        // Baldintzak
         elemento = document.getElementById("terminos");

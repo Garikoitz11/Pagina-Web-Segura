@@ -147,7 +147,16 @@
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" name="mugikorra" id="telefono" value="<?php echo $row[8];?>">
 				</div>
+			</div>		
+
+			<!-- Grupo: Datu Bankarioak -->
+			<div class="formulario__grupo" id="grupo__telefono">
+				<label for="datosBancarios" class="formulario__label">Datu Bankarioak</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="datuBankarioak" id="datosBancarios" value="<?php echo $row[9];?>">
+				</div>
 			</div>
+
 
 			<!-- Grupo: baldintzak -->
 			<div class="formulario__grupo" id="grupo__terminos">
@@ -156,7 +165,7 @@
 					<a href="Erosketabaldintzak.php">Baldintzak</a> onartu
 				</label>
 			</div>
-			
+						
 			<!-- Boton Enviar-->
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
 				<button type="button" onclick= "validarFormulario();" class="formulario__btn" value="sartuProduktua">Txertatu</button>
