@@ -15,6 +15,7 @@
     $Pasahitza = $conn->real_escape_string($_POST['pasahitza']);
     $Data = date("Y-m-d");
     $Hordu = date("H:i:s");
+    
 
     $kontsultaBerria = $conn->prepare("SELECT * FROM Erregistroa WHERE Erabiltzailea = ? AND Pasahitza = ?");
    
