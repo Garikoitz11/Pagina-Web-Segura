@@ -3,7 +3,7 @@
     $conn->set_charset('utf8');
     $kontsulta = "SELECT Kodea, Izena, Prezioa FROM Produktuak"; 
     session_start();
-    if(isset($_SESSION['denbora']) ) {
+    /*if(isset($_SESSION['denbora']) ) {
 
         //Tiempo en segundos para dar vida a la sesión.
         $inactivo = 5;//20min en este caso.
@@ -23,11 +23,21 @@
                 exit();
             }
 
-    }
+    }*/
+    
 ?>
 
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+        function start() {
+            time= setTimeout('location="cerrarSesion.php"',10000);
+        }
+        function salir() {
+            clearTimeout(time);
+            time= setTimeout('location="cerrarSesion.php"',10000);
+        }
+    </script>
     <head>
         <title>Gartxon S.L</title>
         <meta charset="UTF-8">
@@ -35,7 +45,14 @@
         <link rel="stylesheet" type="text/css" href="./CSS/produktuak.css">
         <link rel="shortcut icon" href="irudiak/Favicon.ico" type="image/x-icon">
     </head>
-    <body>
+    <?php
+
+    if(isset($_SESSION['izena'])) {
+        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
+    } else {
+        echo"<body>";
+    }
+    ?>
         <header class="header">
             <br>
             <div class="conimg">

@@ -1,12 +1,12 @@
 <?php
-       
+      
+    session_start(); 
     $hostname = "db";
     $username = "admin";
     $password = "test";
     $db = "database";
     $db2 = "log";
 
-    session_start();
 
     $conn = new mysqli($hostname,$username,$password,$db);
     $conn2 = new mysqli($hostname,$username,$password,$db2);
@@ -26,11 +26,11 @@
     $kontsultaBerria->execute();
 
     $emaitza = $kontsultaBerria->get_result();
-
+    //$_SESSION['izena'] = $Erabiltzaile;
     if($emaitza->num_rows == 1){
         //echo "<script>window.location.href='datuakAldatu.php'</script>";
         $_SESSION['izena'] = $Erabiltzaile;
-        $_SESSION['denbora'] = time();
+        //$_SESSION['denbora'] = time();
         echo "<script>alert('Ongi etorri $Erabiltzaile');window.location.href='index.php'</script>";
         
 
