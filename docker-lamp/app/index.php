@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_SESSION['denbora'])) {
+/*if(isset($_SESSION['denbora'])) {
     
  //Tiempo en segundos para dar vida a la sesión.
  $inactivo = 5;//20min en este caso.
@@ -25,7 +25,7 @@ if(isset($_SESSION['denbora'])) {
         $_SESSION['denbora'] = time();
      }
 
-}
+    }*/
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>

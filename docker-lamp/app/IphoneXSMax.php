@@ -53,6 +53,7 @@ header("X-Content-Type-Options: nosniff");
     if(isset($_SESSION['izena'])) {
         echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
     } else {
+          
         echo"<body>";
     }
     ?>
