@@ -1,7 +1,8 @@
 <?php
+
 session_start();
 
-if(isset($_SESSION['denbora'])) {
+/*if(isset($_SESSION['denbora'])) {
     
  //Tiempo en segundos para dar vida a la sesión.
  $inactivo = 5;//20min en este caso.
@@ -24,13 +25,23 @@ if(isset($_SESSION['denbora'])) {
         $_SESSION['denbora'] = time();
      }
 
-}
-
+    }*/
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>
 <!DOCTYPE html>
 <html>
+
+<script type="text/javascript">
+        function start() {
+            time= setTimeout('location="cerrarSesion.php"',10000);
+        }
+        function salir() {
+            clearTimeout(time);
+            time= setTimeout('location="cerrarSesion.php"',10000);
+        }
+    </script>
+
     <head>
         <title>Gartxon S.L.</title>
         <meta charset="UTF-8">
@@ -38,7 +49,14 @@ header("X-Content-Type-Options: nosniff");
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
         <link rel="shortcut icon" href="irudiak/Favicon.ico" type="image/x-icon">
     </head>
-    <body>
+    <?php
+    
+    if(isset($_SESSION['izena'])) {
+        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
+    } else {
+        echo"<body>";
+    }
+    ?>
         <header class="header">
             <div class="container logo-nav-container">
                 <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>
@@ -78,9 +96,14 @@ header("X-Content-Type-Options: nosniff");
                             <li><a href="produktuakKontsultatu.php" target="_self">Erabiltzaileen produktuak</a></li>
                             <li><a href="sartuProduktua.php" target="_self">Sartu produktuak</a></li>
                             <?php
-                            if ($Erabiltzaile != null || $Erabiltzaile != '') {
-                            ?>
-                                <li><a href="datuakAldatu.php" target="_self">Zure datuak aldatu</a></li>
+
+                        //$Erabiltzaile = $_SESSION['izena'] ;
+
+                        if (isset($_SESSION['izena'])) {
+                        //echo '<a href="cerrarSesion.php" target="_self" class= "hola"> SALIR </a>';
+                        ?>
+                         <li><a href="datuakAldatu.php" target="_self">Zure datuak aldatu</a></li>
+                          
                             <?php } ?>
 
                         </ul>

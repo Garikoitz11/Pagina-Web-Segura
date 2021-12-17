@@ -101,7 +101,7 @@ function validarPasahitza(parametro){
 
 //Funcion para datuBankarioak
 function validarDatuBankarioak(parametro){
-    var patron= /^[a-zA-Z]{2}[0-9]{22}$/;
+    var patron= /^([a-zA-Z]{2})\s*\t*(\d{2})\s*\t*(\d{4})\s*\t*(\d{4})\s*\t*(\d{2})\s*\t*(\d{10})/;
     if(parametro.search(patron)){
         return false;
     }else{

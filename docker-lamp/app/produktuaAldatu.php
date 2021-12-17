@@ -5,7 +5,7 @@
     $conexion = new mysqli("db", "admin", "test", "database");
     $kontsulta = "SELECT * FROM Produktuak WHERE Kodea = '$GureKodea'"; 
 	
-	if(isset($_SESSION['denbora']) ) {
+	/*if(isset($_SESSION['denbora']) ) {
 
         //Tiempo en segundos para dar vida a la sesión.
         $inactivo = 5;//20min en este caso.
@@ -24,11 +24,21 @@
 				echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
                 exit();
             }
-    }
+    }*/
+	
 ?>
 
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+        function start() {
+            time= setTimeout('location="cerrarSesion.php"',10000);
+        }
+        function salir() {
+            clearTimeout(time);
+            time= setTimeout('location="cerrarSesion.php"',10000);
+        }
+    </script>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width", user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0>
@@ -38,7 +48,14 @@
 		<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"> </script>
 		<link rel="shortcut icon" href="irudiak/Favicon.ico" type="image/x-icon">
 	</head>
-    <body>
+    <?php
+
+    if(isset($_SESSION['izena'])) {
+        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
+    } else {
+        echo"<body>";
+    }
+    ?>
 		<header class="header">
             <div class="container logo-nav-container">
                 <a href="index.php" target="_self" target="_blank"><img class="logo-principal" src="irudiak/gartxon1.jpg" alt="Gartxon S.L."></a>                   

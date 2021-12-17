@@ -1,10 +1,9 @@
 <?php
 
 session_start();
-
+unset($_SESSION['izena']);
 session_destroy();
-
-header("location: index.php");
+echo "<script>alert('Saioa itxi egin da'); window.location.href='index.php'</script>"; 
 
 //exit();
 
