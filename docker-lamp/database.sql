@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 24-10-2021 a las 21:35:57
+-- Tiempo de generación: 17-12-2021 a las 11:33:50
 -- Versión del servidor: 10.6.4-MariaDB-1:10.6.4+maria~focal
 -- Versión de PHP: 7.4.20
 
@@ -34,18 +34,45 @@ CREATE TABLE `Erregistroa` (
   `PostaKodea` int(11) NOT NULL,
   `NAN` char(9) COLLATE utf8mb4_unicode_ci NOT NULL,
   `JaiotzaData` date NOT NULL,
-  `Pasahitza` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Pasahitza` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PostaElektronikoa` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Mugikorra` int(11) NOT NULL
+  `Mugikorra` int(11) NOT NULL,
+  `BankuDatuak` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `Erregistroa`
 --
 
-INSERT INTO `Erregistroa` (`Erabiltzailea`, `Izena`, `Abizenak`, `PostaKodea`, `NAN`, `JaiotzaData`, `Pasahitza`, `PostaElektronikoa`, `Mugikorra`) VALUES
-('Gari45', 'Garikoitz', 'Salaberria', 48903, '79181000G', '2000-12-14', '123', 'hghg@gmail.com', 123456789),
-('Janire12', 'janire', 'veganzones', 48930, '22761980f', '2001-12-14', '142', 'janirevg@gmail.com', 640383124);
+INSERT INTO `Erregistroa` (`Erabiltzailea`, `Izena`, `Abizenak`, `PostaKodea`, `NAN`, `JaiotzaData`, `Pasahitza`, `PostaElektronikoa`, `Mugikorra`, `BankuDatuak`) VALUES
+('Gari45', 'Garikoitz', 'Salaberria', 48903, '79181000G', '2001-01-11', '1234', 'gari@gmail.com', 999888999, 'ES1234567890123456789012'),
+('janire', 'hshhs', 'hshsh', 48903, '22761980F', '2001-12-14', 'Janire123!', 'hghg@gmail.com', 666666666, 'ES1234567891234567891234'),
+('Janire12', 'Janire', 'Veganzones', 48903, '79181000G', '2001-12-14', 'Jani123?', 'janire@ehu.eus', 999888999, 'ES12');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Loga`
+--
+
+CREATE TABLE `Loga` (
+  `id` int(11) NOT NULL,
+  `erabiltzaile` varchar(20) NOT NULL,
+  `dat` date NOT NULL,
+  `hordua` time NOT NULL,
+  `saioaHasiDa` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `Loga`
+--
+
+INSERT INTO `Loga` (`id`, `erabiltzaile`, `dat`, `hordua`, `saioaHasiDa`) VALUES
+(1, 'Juan', '2021-12-17', '00:56:00', 0),
+(4, 'Gari45', '2021-12-17', '11:17:40', 0),
+(9, 'kdkd', '2021-12-17', '11:29:57', 0),
+(10, 'Gari45', '2021-12-17', '11:30:10', 0),
+(11, 'Gari45', '2021-12-17', '11:30:19', 1);
 
 -- --------------------------------------------------------
 
@@ -62,16 +89,6 @@ CREATE TABLE `Produktuak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `Produktuak`
---
-
-INSERT INTO `Produktuak` (`Kodea`, `Izena`, `Mota`, `Deskribapena`, `Prezioa`) VALUES
-(1, 'Xiaomi', 'mugikorra', 'oso ona', 245),
-(7, 'canon', 'Kamara', 'Oso argazki onak', 400),
-(11, 'hp', 'ordenagailua', 'Oso merkea', 700),
-(13, 'iphone', 'mugikorra', 'oso ona', 455);
-
---
 -- Índices para tablas volcadas
 --
 
@@ -80,6 +97,12 @@ INSERT INTO `Produktuak` (`Kodea`, `Izena`, `Mota`, `Deskribapena`, `Prezioa`) V
 --
 ALTER TABLE `Erregistroa`
   ADD PRIMARY KEY (`Erabiltzailea`);
+
+--
+-- Indices de la tabla `Loga`
+--
+ALTER TABLE `Loga`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `Produktuak`
@@ -92,10 +115,16 @@ ALTER TABLE `Produktuak`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `Loga`
+--
+ALTER TABLE `Loga`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT de la tabla `Produktuak`
 --
 ALTER TABLE `Produktuak`
-  MODIFY `Kodea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Kodea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
