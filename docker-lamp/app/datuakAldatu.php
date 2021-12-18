@@ -5,29 +5,7 @@
     $conexion = new mysqli("db", "admin", "test", "database");
 	$conexion->set_charset('utf8');
 
-    $kontsulta = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
-	/*if(isset($_SESSION['denbora']) ) {
-
-        //Tiempo en segundos para dar vida a la sesión.
-        $inactivo = 5;//20min en este caso.
-
-        //Calculamos tiempo de vida inactivo.
-        $vida_session = time() - $_SESSION['denbora'];
-
-            //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
-            if($vida_session > $inactivo)
-            {
-                //Removemos sesión.
-                session_unset();
-                //Destruimos sesión.
-                session_destroy();              
-                //Redirigimos pagina.
-				echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";                
-                exit();
-            }
-
-    }*/
-	
+    $kontsulta = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 	
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +24,7 @@
         <meta name="viewport" content="width=device-width", user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0>
 		<title>Gartxon S.L.</title>
 		<link rel="stylesheet" href="CSS/estilo.css">
-		<script src="js/formulario.js"></script>
+		<script src="js/formularioDatuakAldatu.js"></script>
 		<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"> </script>
 		<link rel="shortcut icon" href="irudiak/Favicon.ico" type="image/x-icon">
 	</head>
@@ -65,38 +43,40 @@
         </header>
 		<main>
 		<?php $kontsultaBerria = $conexion->query($kontsulta);
-            while($row = $kontsultaBerria->fetch_row()){?>
+            while($row = $kontsultaBerria->fetch_row()){
+				$BankuDekode = base64_decode($row[9]);
+				?>
 
         <div class="alerta" id="alerta"></div>
         <br>
 
-        <form name = "addForm" class="formulario" id="formulario" action="datuBaseaAldatu.php" method="post">
+        <form name = "addForm" class="formulario" id="formularioDatuakAldatu" action="datuBaseaAldatu.php" method="post">
 
 				<legend class= "registrar" style="font-size: 24px;"><strong></strong></legend>
 				<br>
 
+<!-- Grupo: erabiltzaile -->
+<div class="formulario__grupo" id="grupo__nombre">
+	<label for="nombre" class="formulario__label">Erabiltzailea</label>
+	<div class="formulario__grupo-input">
+		<input class="formulario__input" name="erabiltzaile" id="usuario" value="<?php echo $row[0];?>" disabled>
+	</div>
+</div>
+<!-- Grupo: izena -->
+<div class="formulario__grupo" id="grupo__nombre">
+	<label for="nombre" class="formulario__label">Izena</label>
+	<div class="formulario__grupo-input">
+		<input type="text" class="formulario__input" name="izena" id="nombre" value="<?php echo $row[1];?>">
+	</div>
+</div>
 
-			<!-- Grupo: erabiltzaile -->
-			<div class="formulario__grupo" id="grupo__nombre">
-				<label for="nombre" class="formulario__label">Erabiltzailea</label>
-				<div class="formulario__grupo-input">
-					<input class="formulario__input" name="erabiltzaile" id="usuario" value="<?php echo $row[0];?>" disabled>
-				</div>
-			</div>
-			<!-- Grupo: izena -->
-			<div class="formulario__grupo" id="grupo__nombre">
-				<label for="nombre" class="formulario__label">Izena</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="izena" id="nombre" value="<?php echo $row[1];?>">
-				</div>
-			</div>
-
-			<!-- Grupo: abizena-->
-			<div class="formulario__grupo" id="grupo__abizena">
-				<label for="abizena" class="formulario__label">Abizena</label>
-				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="abizena" id="abizena" value="<?php echo $row[2];?>">
-					</div>
+<!-- Grupo: abizena-->
+<div class="formulario__grupo" id="grupo__abizena">
+	<label for="abizena" class="formulario__label">Abizena</label>
+	<div class="formulario__grupo-input">
+		<input type="text" class="formulario__input" name="abizena" id="abizena" value="<?php echo $row[2];?>">
+		</div>
+</div>
 			</div>
 
 			<!-- Grupo: posta-kodea -->
@@ -133,7 +113,7 @@
 			<div class="formulario__grupo" id="grupo__password">
 				<label for="password" class="formulario__label">Pasahitza</label>
 				<div class="formulario__grupo-input">
-					<input type="password" class="formulario__input" name="pasahitza" id="password" value="<?php echo $row[6];?>">
+					<input type="password" class="formulario__input" name="pasahitza" id="password">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					<span id = "message1" style="color:red"> </span>
 				</div>
@@ -144,7 +124,7 @@
 			<div class="formulario__grupo" id="grupo__password2">
 				<label for="password2" class="formulario__label">Pasahitza errepikatu</label>
 				<div class="formulario__grupo-input">
-					<input type="password" class="formulario__input" name="pasahitza2" id="password2" value="<?php echo $row[6];?>">
+					<input type="password" class="formulario__input" name="pasahitza2" id="password2">
 					<span id = "message2" style="color:red"> </span>
 				</div>
 				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
@@ -170,17 +150,8 @@
 			<div class="formulario__grupo" id="grupo__telefono">
 				<label for="datosBancarios" class="formulario__label">Datu Bankarioak</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="datuBankarioak" id="datosBancarios" value="<?php echo $row[9];?>">
+					<input type="text" class="formulario__input" name="datuBankarioak" id="datosBancarios" value="<?php echo $BankuDekode;?>">
 				</div>
-			</div>
-
-
-			<!-- Grupo: baldintzak -->
-			<div class="formulario__grupo" id="grupo__terminos">
-				<label class="formulario__label">
-					<input class="formulario__checkbox" type="checkbox" name="baldintzak" id="terminos">
-					<a href="Erosketabaldintzak.php">Baldintzak</a> onartu
-				</label>
 			</div>
 						
 			<!-- Boton Enviar-->

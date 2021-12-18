@@ -17,14 +17,16 @@
     $Hordu = date("H:i:s");
     
 
-    $kontsultaBerria = $conn->prepare("SELECT * FROM Erregistroa WHERE Erabiltzailea = ? AND Pasahitza = ?");
+    $kontsultaBerria = $conn->prepare("SELECT * FROM Erregistroa WHERE Erabiltzailea = ?");
    
-    $kontsultaBerria->bind_param('ss', $Erabiltzaile, $Pasahitza);
+    $kontsultaBerria->bind_param('s', $Erabiltzaile);
     $kontsultaBerria->execute();
 
     $emaitza = $kontsultaBerria->get_result();
     //$_SESSION['izena'] = $Erabiltzaile;
-    if($emaitza->num_rows == 1){
+    $PasBilatu = mysqli_fetch_array($emaitza);
+
+    if(($emaitza->num_rows == 1) && (password_verify($Pasahitza, $PasBilatu['Pasahitza']))){
         //echo "<script>window.location.href='datuakAldatu.php'</script>";
         $_SESSION['izena'] = $Erabiltzaile;
         //$_SESSION['denbora'] = time();

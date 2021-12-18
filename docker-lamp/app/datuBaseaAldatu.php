@@ -20,8 +20,15 @@
     $PostaElektronikoa=$conn->real_escape_string($_POST['postaElektronikoa']);
     $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
     $Bankua=$conn->real_escape_string($_POST['datuBankarioak']);
+    $BankuDekode = base64_encode($Bankua);
     
-    $kontsultaBerria = $conn->query("UPDATE Erregistroa SET Izena = '$Izena', Abizenak = '$Abizena', PostaKodea = '$PostaKodea', NAN = '$NAN', JaiotzaData = '$JaiotzaData', Pasahitza = '$Pasahitza', PostaElektronikoa = '$PostaElektronikoa', Mugikorra = '$Mugikorra', BankuDatuak = '$Bankua' WHERE Erabiltzailea = '$Erabiltzailea'");
+    $kontsultaBerria = $conn->query("UPDATE Erregistroa SET Izena = '$Izena', Abizenak = '$Abizena', PostaKodea = '$PostaKodea', NAN = '$NAN', JaiotzaData = '$JaiotzaData', PostaElektronikoa = '$PostaElektronikoa', Mugikorra = '$Mugikorra', BankuDatuak = '$BankuDekode' WHERE Erabiltzailea = '$Erabiltzailea'");
+
+    if(!empty($Pasahitza)){
+      $PasZifratuta=password_hash($Pasahitza,PASSWORD_BCRYPT);
+      mysqli_query($conn, "UPDATE Erregistroa SET Pasahitza= '$PasZifratuta' WHERE Erabiltzailea = '$Erabiltzailea'")
+      or die (mysqli_error($conn));
+    }
 
     if($kontsultaBerria){
       echo "<script>alert('Erabiltzailea eguneratu da');
