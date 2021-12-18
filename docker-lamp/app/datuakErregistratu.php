@@ -18,7 +18,7 @@
 
   $kontsultaBerria = $conn->query("INSERT INTO Erregistroa VALUES ('$Erabiltzailea', '$Izena', '$Abizena', '$PostaKodea', '$NAN', '$JaiotzaData', '$Pasahitza', '$PostaElektronikoa', '$Mugikorra', '$Bankua')");
 
-  //a
+  //aa
 
   if($kontsultaBerria){
     $_SESSION['izena'] = $Erabiltzailea;
