@@ -48,14 +48,7 @@ header("X-Content-Type-Options: nosniff");
         <link rel="stylesheet" type="text/css" href="CSS/4fotos.css">
         <link rel="shortcut icon" href="irudiak/Favicon.ico" type="image/x-icon">
     </head>
-    <?php
-
-    if(isset($_SESSION['izena'])) {
-        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
-    } else {
-        echo"<body>";
-    }
-    ?>
+    d
         <header class="header">
             <br>
             <div class="conimg">

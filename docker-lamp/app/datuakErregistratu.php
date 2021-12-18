@@ -16,7 +16,10 @@
   $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
   $Bankua=$conn->real_escape_string($_POST['datuBankarioak']); 
 
-  $kontsultaBerria = $conn->query("INSERT INTO Erregistroa VALUES ('$Erabiltzailea', '$Izena', '$Abizena', '$PostaKodea', '$NAN', '$JaiotzaData', '$Pasahitza', '$PostaElektronikoa', '$Mugikorra', '$Bankua')");
+  $PasZifratuta=password_hash($Pasahitza,PASSWORD_BCRYPT);
+  $BankuZifratuta=base64_encode($Bankua);
+
+  $kontsultaBerria = $conn->query("INSERT INTO Erregistroa VALUES ('$Erabiltzailea', '$Izena', '$Abizena', '$PostaKodea', '$NAN', '$JaiotzaData', '$PasZifratuta', '$PostaElektronikoa', '$Mugikorra', '$BankuZifratuta')");
 
   if($kontsultaBerria){
     $_SESSION['izena'] = $Erabiltzailea;

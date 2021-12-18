@@ -7,7 +7,7 @@
     $db = "database";
 
     $conn = new mysqli($hostname,$username,$password,$db);
-  
+
     $conn->set_charset('utf8');
 
     $Erabiltzailea=$_SESSION['izena'];
@@ -21,10 +21,7 @@
     $Mugikorra=$conn->real_escape_string($_POST['mugikorra']);
     $Bankua=$conn->real_escape_string($_POST['datuBankarioak']);
     
-    $kontsultaBerria = $conn->prepare("UPDATE Erregistroa SET Izena = ?, Abizenak = ?, PostaKodea = ?, NAN = ?, JaiotzaData = ?, Pasahitza = ?, PostaElektronikoa = ?, Mugikorra = ?, BankuDatuak = ? WHERE Erabiltzailea = ?");
-
-    $kontsultaBerria->bind_param('ssissssis', $Izena, $Abizena, $PostaKodea, $NAN, $JaiotzaData, $Pasahitza, $PostaElektronikoa, $Mugikorra, $Erabiltzailea, $Bankua);
-    $kontsultaBerria->execute();
+    $kontsultaBerria = $conn->query("UPDATE Erregistroa SET Izena = '$Izena', Abizenak = '$Abizena', PostaKodea = '$PostaKodea', NAN = '$NAN', JaiotzaData = '$JaiotzaData', Pasahitza = '$Pasahitza', PostaElektronikoa = '$PostaElektronikoa', Mugikorra = '$Mugikorra', BankuDatuak = '$Bankua' WHERE Erabiltzailea = '$Erabiltzailea'");
 
     if($kontsultaBerria){
       echo "<script>alert('Erabiltzailea eguneratu da');
