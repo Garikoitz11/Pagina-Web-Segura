@@ -16,9 +16,6 @@
     $Deskribapena=$conn->real_escape_string($_POST['deskribapena']);
     $Prezioa=$conn->real_escape_string($_POST['prezio']);
     
-    /*if ($conn->connect_error) {
-      die("Database connection failed: " . $conn->connect_error);
-    }*/
     if($kontsultaBerria = $conn->prepare("UPDATE Produktuak SET Izena = ?, Mota = ?, Deskribapena = ?, Prezioa = ? WHERE Kodea = ?")){
       $kontsultaBerria->bind_param('sssdi', $Izena, $Mota, $Deskribapena, $Prezioa, $Kodea);
       $kontsultaBerria->execute();
