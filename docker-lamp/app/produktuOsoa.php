@@ -14,39 +14,17 @@
     $_SESSION["kode"] = $ProduktuKode;
     $Kode = $_SESSION["kode"];
     $kontsulta = "SELECT * FROM Produktuak WHERE Kodea = ?"; 
-
-    /*if(isset($_SESSION['denbora']) ) {
-
-        //Tiempo en segundos para dar vida a la sesión.
-        $inactivo = 5;//20min en este caso.
-    
-        //Calculamos tiempo de vida inactivo.
-        $vida_session = time() - $_SESSION['denbora'];
-    
-            //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
-            if($vida_session > $inactivo)
-            {
-                //Removemos sesión.
-                session_unset();
-                //Destruimos sesión.
-                session_destroy();              
-                //Redirigimos pagina.
-                echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";       
-                exit();
-            }
-    }*/
-    
 ?>
 
 <!DOCTYPE html>
 <html>
 <script type="text/javascript">
-        function start() {
-            time= setTimeout('location="cerrarSesion.php"',10000);
+        function hasi() {
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
-        function salir() {
+        function itxi() {
             clearTimeout(time);
-            time= setTimeout('location="cerrarSesion.php"',10000);
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
     </script>
     <head>
@@ -59,7 +37,7 @@
     <?php
 
     if(isset($_SESSION['izena'])) {
-        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
+        echo"<body onload='hasi()' onkeypress='itxi()' onclick='itxi()'>";
     } else {
         echo"<body>";
     }

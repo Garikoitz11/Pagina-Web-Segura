@@ -10,12 +10,12 @@
 <!DOCTYPE html>
 <html>
 <script type="text/javascript">
-        function start() {
-            time= setTimeout('location="cerrarSesion.php"',10000);
+        function hasi() {
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
-        function salir() {
+        function itxi() {
             clearTimeout(time);
-            time= setTimeout('location="cerrarSesion.php"',10000);
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
     </script>
     <head>
@@ -30,7 +30,7 @@
     <?php
 
     if(isset($_SESSION['izena'])) {
-        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
+        echo"<body onload='hasi()' onkeypress='itxi()' onclick='itxi()'>";
     } else {
         echo"<body>";
     }

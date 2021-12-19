@@ -5,40 +5,18 @@ $GureErabiltzaile = $_SESSION['izena'];
 $conexion = mysqli_connect("db", "admin", "test", "database");
 $erabiltzaile = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
 
-/*if(isset($_SESSION['denbora']) ) {
-
-    //Tiempo en segundos para dar vida a la sesión.
-    $inactivo = 5;//20min en este caso.
-
-    //Calculamos tiempo de vida inactivo.
-    $vida_session = time() - $_SESSION['denbora'];
-
-        //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
-        if($vida_session > $inactivo)
-        {
-            //Removemos sesión.
-            session_unset();
-            //Destruimos sesión.
-            session_destroy();              
-            //Redirigimos pagina.
-            echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";  
-            exit();
-        }
-
-}*/
-
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>
 <!DOCTYPE html>
 <html>
 <script type="text/javascript">
-        function start() {
-            time= setTimeout('location="cerrarSesion.php"',10000);
+        function hasi() {
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
-        function salir() {
+        function itxi() {
             clearTimeout(time);
-            time= setTimeout('location="cerrarSesion.php"',10000);
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
     </script>
     <head>
@@ -52,7 +30,7 @@ header("X-Content-Type-Options: nosniff");
     <?php
 
     if(isset($_SESSION['izena'])) {
-        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
+        echo"<body onload='hasi()' onkeypress='itxi()' onclick='itxi()'>";
     } else {
         echo"<body>";
     }

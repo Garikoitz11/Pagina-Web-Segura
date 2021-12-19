@@ -2,30 +2,6 @@
 
 session_start();
 
-/*if(isset($_SESSION['denbora'])) {
-    
- //Tiempo en segundos para dar vida a la sesión.
- $inactivo = 5;//20min en este caso.
-
- //Calculamos tiempo de vida inactivo.
- $vida_session = time() - $_SESSION['denbora'];
-
-     //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
-     if($vida_session > $inactivo)
-     {
-         //Removemos sesión.
-         session_unset();
-         //Destruimos sesión.
-         session_destroy();              
-         //Redirigimos pagina.
-         echo "<script>alert('Saioa itxi egin da');window.location.href='index.php'</script>";
-         exit();
-     }
-     else{
-        $_SESSION['denbora'] = time();
-     }
-
-    }*/
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>
@@ -33,12 +9,12 @@ header("X-Content-Type-Options: nosniff");
 <html>
 
 <script type="text/javascript">
-        function start() {
-            time= setTimeout('location="cerrarSesion.php"',10000);
+        function hasi() {
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
-        function salir() {
+        function itxi() {
             clearTimeout(time);
-            time= setTimeout('location="cerrarSesion.php"',10000);
+            time= setTimeout('location="cerrarSesion.php"',60000);
         }
     </script>
 
@@ -52,7 +28,7 @@ header("X-Content-Type-Options: nosniff");
     <?php
     
     if(isset($_SESSION['izena'])) {
-        echo"<body onload='start()' onkeypress='salir()' onclick='salir()'>";
+        echo"<body onload='hasi()' onkeypress='itxi()' onclick='itxi()'>";
     } else {
         echo"<body>";
     }
@@ -63,26 +39,17 @@ header("X-Content-Type-Options: nosniff");
                 <nav class="navigation">
                     <ul>
                         <?php
-
-                        //$Erabiltzaile = $_SESSION['izena'] ;
-
                         if (isset($_SESSION['izena'])) {
-                        //echo '<a href="cerrarSesion.php" target="_self" class= "hola"> SALIR </a>';
                         ?>
                         <li><a href="cerrarSesion.php" target="_self" > SAIOA ITXI</a></li>
                         <?php
                         }else{
-                        //echo '<a href="erregistratu.php" target="_self" class= "hola">ERREGISTRATU</a>';
-                        //echo '<a href="Hasisaioa.php" target="_self" class= "hola">HASI SAIOA</a>';
                         ?>
                         <li><a href="erregistratu.php" target="_self" >ERREGISTRATU</a></li>
                         <li><a href="Hasisaioa.php" target="_self" >HASI SAIOA</a></li>
                   <?php  }
                         ?>
-                        <!-- <li><a href="cerrarSesion.php" target="_self"> SALIR</a></li> 
-                        <li><a href="erregistratu.php" target="_self">ERREGISTRATU</a></li> 
-                        <li><a href="Hasisaioa.php" target="_self">HASI SAIOA</a></li> 
-                    </ul> -->
+
                 </nav>                                  
             </div>
         </header>
@@ -96,11 +63,7 @@ header("X-Content-Type-Options: nosniff");
                             <li><a href="produktuakKontsultatu.php" target="_self">Erabiltzaileen produktuak</a></li>
                             <li><a href="sartuProduktua.php" target="_self">Sartu produktuak</a></li>
                             <?php
-
-                        //$Erabiltzaile = $_SESSION['izena'] ;
-
                         if (isset($_SESSION['izena'])) {
-                        //echo '<a href="cerrarSesion.php" target="_self" class= "hola"> SALIR </a>';
                         ?>
                          <li><a href="datuakAldatu.php" target="_self">Zure datuak aldatu</a></li>
                           
