@@ -36,7 +36,7 @@ header("X-Content-Type-Options: nosniff");
 				<br>
 			<!-- Grupo: erabiltzaile -->
 			<div class="formulario__grupo" id="grupo__usuario">
-				<label for="usuario" class="formulario__label">Erabiltzaile</label>
+				<label for="usuario" class="formulario__label">Erabiltzaile-izena</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" name="erabiltzaile" id="usuario" placeholder="markel45">
 				</div>

@@ -45,22 +45,16 @@ header("X-Content-Type-Options: nosniff");
                         $Erabiltzaile = $_SESSION['izena'] ;
 
                         if ($Erabiltzaile == null || $Erabiltzaile == '') {
-                        //echo '<a href="cerrarSesion.php" target="_self" class= "hola"> SALIR </a>';
                         ?>
                         <li><a href="erregistratu.php" target="_self" >ERREGISTRATU</a></li>
                         <li><a href="Hasisaioa.php" target="_self" >HASI SAIOA</a></li>
                         <?php
                         }else{
-                        //echo '<a href="erregistratu.php" target="_self" class= "hola">ERREGISTRATU</a>';
-                        //echo '<a href="Hasisaioa.php" target="_self" class= "hola">HASI SAIOA</a>';
                         ?>
                         <li><a href="cerrarSesion.php" target="_self" > SAIOA ITXI </a></lio>
-                  <?php  }
+                        <?php  }
                         ?>
-                        <!-- <li><a href="cerrarSesion.php" target="_self"> SALIR</a></li> 
-                        <li><a href="erregistratu.php" target="_self">ERREGISTRATU</a></li> 
-                        <li><a href="Hasisaioa.php" target="_self">HASI SAIOA</a></li> 
-                    </ul> -->
+                    </ul>
                 </nav>                    
             </div>
         </header>

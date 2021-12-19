@@ -31,7 +31,7 @@ header("X-Content-Type-Options: nosniff");
         <div class="formulario__grupo" id="grupo__usuario">
             <label for="usuario" class="formulario__label1">Erabiltzaile-izena</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="erabiltzaile" id="usuario" required pattern="[A-Za-z0-9_-]{1,15}" placeholder="markel45">
+                <input type="text" class="formulario__input" name="erabiltzaile" id="usuario" pattern="[a-zA-Z0-9_-]{4,16}" placeholder="markel45" required>
             </div>
         </div>
         <br>

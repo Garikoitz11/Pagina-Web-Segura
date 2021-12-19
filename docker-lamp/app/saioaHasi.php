@@ -23,13 +23,10 @@
     $kontsultaBerria->execute();
 
     $emaitza = $kontsultaBerria->get_result();
-    //$_SESSION['izena'] = $Erabiltzaile;
     $PasBilatu = mysqli_fetch_array($emaitza);
 
     if(($emaitza->num_rows == 1) && (password_verify($Pasahitza, $PasBilatu['Pasahitza']))){
-        //echo "<script>window.location.href='datuakAldatu.php'</script>";
         $_SESSION['izena'] = $Erabiltzaile;
-        //$_SESSION['denbora'] = time();
         $kontsultaBerria = $conn->query("INSERT INTO Loga (erabiltzaile, dat, hordua, saioaHasiDa) VALUES ('$Erabiltzaile', '$Data', '$Hordu', True)");
         echo "<script>alert('Ongi etorri $Erabiltzaile');window.location.href='index.php'</script>";
     }
