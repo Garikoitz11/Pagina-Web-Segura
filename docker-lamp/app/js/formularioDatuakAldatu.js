@@ -196,12 +196,6 @@ function validarFormulario(){
         else{
         document.getElementById("alerta").innerHTML = "";
         }
-        /*
-    if(formulario.password.value == ""){
-        document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, pasahitza sartu.</div>';
-        formulario.password.focus();
-        return false;
-    }else */
     if (formulario.password.value != ""){
         if(validarPasahitza(formulario.password.value)== false){
         document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, sartu pasahitz bat 8 digiturekin edo gehiago eta maiuskula, minuskula, zenbaki eta karakter arraro batekin.</div>';
@@ -265,13 +259,5 @@ function validarFormulario(){
             else{
             document.getElementById("alerta").innerHTML = "";
             }
-    /*
-       // Baldintzak
-        elemento = document.getElementById("terminos");
-        if( !elemento.checked ) {
-            document.getElementById("alerta").innerHTML = '<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a> Mesedez, baldintzak onartu .</div>';
-            return false;
-        }
-    */
    formulario.submit();
 }

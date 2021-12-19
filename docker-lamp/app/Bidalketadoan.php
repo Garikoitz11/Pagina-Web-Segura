@@ -4,7 +4,7 @@ $GureErabiltzaile = $_SESSION['izena'];
 
 $conexion = mysqli_connect("db", "admin", "test", "database");
 $erabiltzaile = "SELECT * FROM Erregistroa WHERE Erabiltzailea = '$GureErabiltzaile'"; 
-
+?>
 
 <!DOCTYPE html>
 <html>
