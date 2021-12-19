@@ -134,7 +134,7 @@ header("X-Content-Type-Options: nosniff");
 			</div>
 
 			<!-- Grupo: baldintzak -->
-			<div class="formulario__grupo" id="grupo__terminos">
+			<div class="formulario__grupo formulario__grupo-btn-enviar" id="grupo__terminos">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="baldintzak" id="terminos">
 					<a href="Erosketabaldintzak.php">Baldintzak</a> onartu

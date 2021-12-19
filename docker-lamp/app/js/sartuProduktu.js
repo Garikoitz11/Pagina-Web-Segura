@@ -1,5 +1,5 @@
 function validarTexto(parametro){
-    var patron = /^[a-zA-ZÀ-ÿ\s]{1,20}$/;
+    var patron = /^[a-zA-Z0-9\s]{1,20}$/;
     if(parametro.search(patron)){
         return false;
     } else{
